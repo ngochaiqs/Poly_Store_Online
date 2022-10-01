@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+
+
+
+    <dimen name="dp_22">22sp</dimen>
+</resources>
