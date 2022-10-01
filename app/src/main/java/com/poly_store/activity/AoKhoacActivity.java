@@ -13,5 +13,6 @@ public class AoKhoacActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ao_khoac);
         //AoKhoacActivity thay cho LaptopActivity
+        //
     }
 }
