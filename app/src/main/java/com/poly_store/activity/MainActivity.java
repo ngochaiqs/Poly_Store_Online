@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        onCreate();
+        AnhXa();
     }
 
-    public void onCreate() {
+    public void AnhXa() {
 //        toolbar = findViewById(R.id.toolbarMain);
         viewFlipper = findViewById(R.id.viewLipper);
         recyclerViewMain = findViewById(R.id.recyclerviewMain);
