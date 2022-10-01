@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.poly_store">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +16,54 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Poly_Store"
         tools:targetApi="31">
+        <activity
+            android:name=".XemDonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThongKeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemSPActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TimKiemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AoKhoacActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GioHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AoThunActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DangNhapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DangKyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
