@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.poly_store.R;
+import com.poly_store.adapter.LoaiSPAdapter;
+import com.poly_store.model.LoaiSP;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView lvMain;
     DrawerLayout drawerLayout;
+    LoaiSPAdapter loaiSPAdapter;
+    List<LoaiSP> loaiSPList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationView);
         lvMain = findViewById(R.id.lvMain);
         drawerLayout = findViewById(R.id.drawerlayout);
+        //khoi tao adapter
+        loaiSPAdapter = new LoaiSPAdapter(getApplicationContext(), loaiSPList);
+        lvMain.setAdapter(loaiSPAdapter);
     }
 
     private void ActionViewFlipper(){
