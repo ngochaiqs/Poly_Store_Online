@@ -27,52 +27,52 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".XemDonActivity"
+            android:name=".activity.XemDonActivity"
             android:exported="false" />
         <activity
-            android:name=".UserActivity"
+            android:name=".activity.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".ThongKeActivity"
+            android:name=".activity.ThongKeActivity"
             android:exported="false" />
         <activity
-            android:name=".ThemSPActivity"
+            android:name=".activity.ThemSPActivity"
             android:exported="false" />
         <activity
-            android:name=".ThanhToanActivity"
+            android:name=".activity.ThanhToanActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".TimKiemActivity"
+            android:name=".activity.TimKiemActivity"
             android:exported="false" />
         <activity
-            android:name=".ResetPassActivity"
+            android:name=".activity.ResetPassActivity"
             android:exported="false" />
         <activity
-            android:name=".QuanLiActivity"
+            android:name=".activity.QuanLiActivity"
             android:exported="false" />
         <activity
-            android:name=".AoKhoacActivity"
+            android:name=".activity.AoKhoacActivity"
             android:exported="false" />
         <activity
-            android:name=".GioHangActivity"
+            android:name=".activity.GioHangActivity"
             android:exported="false" />
         <activity
-            android:name=".AoThunActivity"
+            android:name=".activity.AoThunActivity"
             android:exported="false" />
         <activity
-            android:name=".DangNhapActivity"
+            android:name=".activity.DangNhapActivity"
             android:exported="false" />
         <activity
-            android:name=".DangKyActivity"
+            android:name=".activity.DangKyActivity"
             android:exported="false" />
         <activity
-            android:name=".ChiTietActivity"
+            android:name=".activity.ChiTietActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".activity.ChatActivity"
             android:exported="false" />
     </application>
 
