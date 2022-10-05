@@ -1,31 +1,31 @@
 package com.poly_store.model;
 
 public class LoaiSP {
-    int maLoaiSP;
-    String tenLoaiSP;
-    String hinhAnhLoaiSP;
+    int maLoai;
+    String tenLoai;
+    String hinhAnh;
 
-    public int getMaLoaiSP() {
-        return maLoaiSP;
+    public int getMaLoai() {
+        return maLoai;
     }
 
-    public void setMaLoaiSP(int maLoaiSP) {
-        this.maLoaiSP = maLoaiSP;
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
     }
 
-    public String getTenLoaiSP() {
-        return tenLoaiSP;
+    public String getTenLoai() {
+        return tenLoai;
     }
 
-    public void setTenLoaiSP(String tenLoaiSP) {
-        this.tenLoaiSP = tenLoaiSP;
+    public void setTenLoai(String tenLoai) {
+        this.tenLoai = tenLoai;
     }
 
-    public String getHinhAnhLoaiSP() {
-        return hinhAnhLoaiSP;
+    public String getHinhAnh() {
+        return hinhAnh;
     }
 
-    public void setHinhAnhLoaiSP(String hinhAnhLoaiSP) {
-        this.hinhAnhLoaiSP = hinhAnhLoaiSP;
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 }

@@ -56,8 +56,8 @@ public class LoaiSPAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
 
         }
-        viewHolder.txtTenLoaiSP.setText(loaiSPList.get(i).getTenLoaiSP());
-        Glide.with(context).load(loaiSPList.get(i).getHinhAnhLoaiSP()).into(viewHolder.imgLoaiSP);
+        viewHolder.txtTenLoaiSP.setText(loaiSPList.get(i).getTenLoai());
+        Glide.with(context).load(loaiSPList.get(i).getHinhAnh()).into(viewHolder.imgLoaiSP);
         return view;
     }
 }

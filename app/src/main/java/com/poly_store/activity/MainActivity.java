@@ -16,13 +16,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.poly_store.R;
 import com.poly_store.adapter.LoaiSPAdapter;
+import com.poly_store.adapter.SanPhamAdapter;
 import com.poly_store.model.LoaiSP;
+import com.poly_store.model.SanPham;
 import com.poly_store.retrofit.ApiBanHang;
 import com.poly_store.retrofit.RetrofitClient;
 import com.poly_store.utils.Utils;
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     List<LoaiSP> loaiSPList;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     ApiBanHang apiBanHang;
+    List<SanPham> sanPhamList;
+    SanPhamAdapter sanPhamAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +62,30 @@ public class MainActivity extends AppCompatActivity {
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
 
         if(isConnected(this)){
-            Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Đã kết nối Internet", Toast.LENGTH_SHORT).show();
             ActionViewFlipper();
             getLoaiSanPham();
+            getSanPham();
         }else {
-            Toast.makeText(getApplicationContext(), "khong co internet, vui long ket noi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Không có Internet", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void getSanPham() {
+        compositeDisposable.add(apiBanHang.getSanPham()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(sanPhamModel -> {
+                    if (sanPhamModel.isSuccess()) {
+                        sanPhamList = sanPhamModel.getResult();
+                        sanPhamAdapter = new SanPhamAdapter(getApplicationContext(), sanPhamList);
+                        recyclerViewMain.setAdapter(sanPhamAdapter);
+                    }
+                }, throwable -> {
+                    Toast.makeText(getApplicationContext(), "Lỗi", Toast.LENGTH_SHORT).show();
+                }));
+    }
+
     private void getLoaiSanPham() {
         compositeDisposable.add(apiBanHang.getLoaiSp()
                 .subscribeOn(Schedulers.io())
@@ -83,19 +105,23 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarMain);
         viewFlipper = findViewById(R.id.viewLipper);
         recyclerViewMain = findViewById(R.id.recyclerviewMain);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
+        recyclerViewMain.setLayoutManager(layoutManager);
+        recyclerViewMain.setHasFixedSize(true);
         navigationView = findViewById(R.id.navigationView);
         lvMain = findViewById(R.id.lvMain);
         drawerLayout = findViewById(R.id.drawerlayout);
-        //khoi tao adapter
-        loaiSPAdapter = new LoaiSPAdapter(getApplicationContext(), loaiSPList);
-        lvMain.setAdapter(loaiSPAdapter);
+        //khoi tao list
+        loaiSPList = new ArrayList<>();
+        sanPhamList = new ArrayList<>();
+        
     }
 
     private void ActionViewFlipper(){
         List<String> mangquangcao = new ArrayList<>();
-        mangquangcao.add("http://mauweb.monamedia.net/thegioididong/wp-content/uploads/2017/12/banner-Le-hoi-phu-kien-800-300.png");
-        mangquangcao.add("http://mauweb.monamedia.net/thegioididong/wp-content/uploads/2017/12/banner-HC-Tra-Gop-800-300.png");
-        mangquangcao.add("http://mauweb.monamedia.net/thegioididong/wp-content/uploads/2017/12/banner-big-ky-nguyen-800-300.jpg");
+        mangquangcao.add("https://360boutique.vn/wp-content/uploads/2022/06/Web.jpg");
+        mangquangcao.add("https://360boutique.vn/wp-content/uploads/2022/07/Banner-web.jpg");
+        mangquangcao.add("https://360boutique.vn/wp-content/uploads/2022/06/web-1.jpg");
         for (int i = 0; i<mangquangcao.size(); i++){
             ImageView imageView = new ImageView(getApplicationContext());
             Glide.with(getApplicationContext()).load(mangquangcao.get(i)).into(imageView);

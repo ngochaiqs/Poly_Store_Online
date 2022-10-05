@@ -4,18 +4,9 @@ public class SanPham {
     int maSP;
     String tenSP;
     int giaSP;
-    String hinhSP;
-    String moTaSP;
-    int maLoaiSP;
-
-    public SanPham(int maSP, String tenSP, int giaSP, String hinhSP, String moTaSP, int maLoaiSP) {
-        this.maSP = maSP;
-        this.tenSP = tenSP;
-        this.giaSP = giaSP;
-        this.hinhSP = hinhSP;
-        this.moTaSP = moTaSP;
-        this.maLoaiSP = maLoaiSP;
-    }
+    String hinhAnhSP;
+    String moTa;
+    int maLoai;
 
     public int getMaSP() {
         return maSP;
@@ -41,27 +32,27 @@ public class SanPham {
         this.giaSP = giaSP;
     }
 
-    public String getHinhSP() {
-        return hinhSP;
+    public String getHinhAnhSP() {
+        return hinhAnhSP;
     }
 
-    public void setHinhSP(String hinhSP) {
-        this.hinhSP = hinhSP;
+    public void setHinhAnhSP(String hinhAnhSP) {
+        this.hinhAnhSP = hinhAnhSP;
     }
 
-    public String getMoTaSP() {
-        return moTaSP;
+    public String getMoTa() {
+        return moTa;
     }
 
-    public void setMoTaSP(String moTaSP) {
-        this.moTaSP = moTaSP;
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
     }
 
-    public int getMaLoaiSP() {
-        return maLoaiSP;
+    public int getMaLoai() {
+        return maLoai;
     }
 
-    public void setMaLoaiSP(int maLoaiSP) {
-        this.maLoaiSP = maLoaiSP;
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
     }
 }

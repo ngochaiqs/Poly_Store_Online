@@ -27,7 +27,7 @@
             <ViewFlipper
                 android:id="@+id/viewLipper"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_200"
+                android:layout_height="180dp"
                 android:layout_margin="@dimen/dp_6"
                 android:background="@drawable/bg_corner_18">
 
@@ -62,7 +62,7 @@
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity="start">
 

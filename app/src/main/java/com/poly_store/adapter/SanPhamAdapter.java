@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.poly_store.R;
 import com.poly_store.model.SanPham;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHolder> {
@@ -36,8 +37,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         SanPham sanPham = sanPhamList.get(position);
         holder.txtTenSP.setText(sanPham.getTenSP());
-        holder.txtGiaSP.setText(sanPham.getGiaSP() + "VNĐ");
-        Glide.with(context).load(sanPham.getHinhSP()).into(holder.imgSP);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        holder.txtGiaSP.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+        Glide.with(context).load(sanPham.getHinhAnhSP()).into(holder.imgSP);
     }
 
     @Override
