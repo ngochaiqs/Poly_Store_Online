@@ -42,9 +42,9 @@ public class AoKhoacActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ao_khoac);
-        //AoKhoacActivity thay cho LaptopActivity
+
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
-        loai = getIntent().getIntExtra("loai", 1);
+        loai = getIntent().getIntExtra("maLoai", 2);
 
 
         AnhXa();
@@ -117,12 +117,12 @@ public class AoKhoacActivity extends AppCompatActivity {
                                 }
 
                             }else {
-                                Toast.makeText(getApplicationContext(), "Het du lieu", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Hết dữ liệu", Toast.LENGTH_SHORT).show();
                                 isLoading = true;
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Khong ket noi server", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Không kết nối được với Server", Toast.LENGTH_SHORT).show();
                         }
                 ));
     }
