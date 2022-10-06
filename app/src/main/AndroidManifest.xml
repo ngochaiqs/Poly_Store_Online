@@ -18,9 +18,7 @@
         android:theme="@style/Theme.Poly_Store"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".ChiTietMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">

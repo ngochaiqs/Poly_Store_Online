@@ -139,7 +139,7 @@ public class AoKhoacActivity extends AppCompatActivity {
     }
 
     private void AnhXa(){
-        toolbar = findViewById(R.id.toobar);
+        toolbar = findViewById(R.id.toolbarAoKhoac);
         recyclerView = findViewById(R.id.recycleview_ak);
         linearLayoutManager = new LinearLayoutManager(this,linearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
