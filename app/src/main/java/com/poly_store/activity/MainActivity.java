@@ -85,12 +85,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         Intent aoKhoac = new Intent(MainActivity.this, AoKhoacActivity.class);
-                        aoKhoac.putExtra("loai",1);
+                        aoKhoac.putExtra("maLoai",2);
                         startActivity(aoKhoac);
                         break;
                     case 2:
-                        Intent aoThun = new Intent(MainActivity.this, AoKhoacActivity.class);
-                        aoThun.putExtra("loai",2);
+                        Intent aoThun = new Intent(MainActivity.this, AoThunActivity.class);
+                        aoThun.putExtra("maLoai",3);
                         startActivity(aoThun);
                         break;
                 }

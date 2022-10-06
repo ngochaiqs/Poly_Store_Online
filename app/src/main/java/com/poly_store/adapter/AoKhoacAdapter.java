@@ -55,7 +55,7 @@ public class AoKhoacAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             myViewHolder.tensp.setText(sanPham.getTenSP().trim());
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
             myViewHolder.giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
-            myViewHolder.mota.setText(sanPham.getMoTa());
+//            myViewHolder.mota.setText(sanPham.getMoTa());
             Glide.with(context).load(sanPham.getHinhAnhSP()).into(myViewHolder.hinhanh);
             myViewHolder.setItemClickListener(new ItemClickListener() {
                 @Override
@@ -63,6 +63,7 @@ public class AoKhoacAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     if (!isLongClick){
                         //click
                         Intent intent = new Intent(context, ChiTietActivity.class);
+                        intent.putExtra("chitiet",sanPham);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }
@@ -102,7 +103,7 @@ public class AoKhoacAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(itemView);
             tensp = itemView.findViewById(R.id.itemak_ten);
             giasp = itemView.findViewById(R.id.itemak_gia);
-            mota = itemView.findViewById(R.id.itemak_mota);
+//            mota = itemView.findViewById(R.id.itemak_mota);
             hinhanh = itemView.findViewById(R.id.itemak_image);
             itemView.setOnClickListener(this);
 

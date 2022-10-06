@@ -17,11 +17,11 @@ public interface ApiBanHang {
     @GET("getsanpham.php")
     Observable<SanPhamModel> getSanPham();
 
-    @POST("chitiet.php")
+    @POST("chitietdonhang.php")
     @FormUrlEncoded
     Observable<SanPhamModel> getSanPham(
         @Field("page") int page,
-        @Field("loai") int loai
+        @Field("maLoai") int maLoai
     );
 
     @POST("dangky.php")

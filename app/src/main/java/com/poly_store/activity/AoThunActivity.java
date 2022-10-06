@@ -11,7 +11,6 @@ public class AoThunActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ao_thun);
-        //AoThunActivity thay cho DienThoaiActivity
-        //Haiiiiiiiiiiiiiiiiiiiii\
+
     }
 }
