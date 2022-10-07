@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class SanPham implements Serializable {
     int maSP;
     String tenSP;
-    int giaSP;
+    String giaSP;
     String hinhAnhSP;
     String moTa;
     int maLoai;
@@ -26,11 +26,11 @@ public class SanPham implements Serializable {
         this.tenSP = tenSP;
     }
 
-    public int getGiaSP() {
+    public String getGiaSP() {
         return giaSP;
     }
 
-    public void setGiaSP(int giaSP) {
+    public void setGiaSP(String giaSP) {
         this.giaSP = giaSP;
     }
 
