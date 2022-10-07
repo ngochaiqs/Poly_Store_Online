@@ -5,5 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ResetPassActivity">
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/line1"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBaseline_toBottomOf="parent"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+   <com.google.android.material.textfield.TextInputEditText
+       android:hint="Email"
+       android:id="@+id/edtresetpass"
+       android:drawableLeft="@drawable/ic_email"
+       android:drawablePadding="10dp"
+       android:inputType="textEmailAddress"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+  </com.google.android.material.textfield.TextInputLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        android:id="@+id/btnresetpass"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Quên mật khẩu"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginTop="25dp"
+        android:background="@color/nps_background_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

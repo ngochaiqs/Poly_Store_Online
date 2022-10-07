@@ -28,6 +28,7 @@ public class DangNhapActivity extends AppCompatActivity {
     AppCompatButton btndangnhap;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Ban chua nhap mat khau", Toast.LENGTH_SHORT).show();
                 }else {
                     //save
+
                     Paper.book().write("email",str_email);
                     Paper.book().write("matKhau",str_matKhau);
                     compositeDisposable.add(apiBanHang.dangNhap(str_email, str_matKhau)

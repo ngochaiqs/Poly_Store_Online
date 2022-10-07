@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     List<SanPham> sanPhamList;
     SanPhamAdapter sanPhamAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
