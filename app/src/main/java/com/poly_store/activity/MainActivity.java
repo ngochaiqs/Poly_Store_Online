@@ -142,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
         //khoi tao list
         loaiSPList = new ArrayList<>();
         sanPhamList = new ArrayList<>();
+        if (Utils.manggiohang == null){
+            Utils.manggiohang = new ArrayList<>();
+        }
         
     }
 
