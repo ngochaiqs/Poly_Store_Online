@@ -7,17 +7,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store.R;
-import com.poly_store.model.GioHang;
 import com.poly_store.model.SanPham;
-import com.poly_store.utils.Utils;
 
 import java.text.DecimalFormat;
 
@@ -27,8 +23,6 @@ public class ChiTietActivity extends AppCompatActivity {
     ImageView imghinhanh;
     Spinner spinner;
     Toolbar toolbar;
-    SanPham sanPham;
-    NotificationBadge badge;
 
 
     @Override
@@ -38,60 +32,10 @@ public class ChiTietActivity extends AppCompatActivity {
         initView();
         ActionToolBar();
         initData();
-        initControl();
-    }
-
-    private void initControl() {
-        btnthem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                themGioHang();
-
-            }
-        });
-    }
-
-    private void themGioHang() {
-        if (Utils.manggiohang.size() > 0) {
-            boolean flag = false;
-            int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-            for (int i = 0; i < Utils.manggiohang.size(); i++) {
-                if (Utils.manggiohang.get(i).getMaspGH() == sanPham.getMaSP()) {
-                    Utils.manggiohang.get(i).setSoluongGH(soluong + Utils.manggiohang.get(i).getSoluongGH());
-                    long gia = Long.parseLong(sanPham.getGiaSP()) * Utils.manggiohang.get(i).getGiaspGH();
-                    Utils.manggiohang.get(i).setGiaspGH(gia);
-                    flag = true;
-                }
-            }
-            if (flag == false) {
-                long gia = Long.parseLong(sanPham.getGiaSP()) * soluong;
-                GioHang gioHang = new GioHang();
-                gioHang.setGiaspGH(gia);
-                gioHang.setSoluongGH(soluong);
-                gioHang.setMaspGH(sanPham.getMaSP());
-                gioHang.setTenspGH(sanPham.getTenSP());
-                gioHang.setHinhspGH(sanPham.getHinhAnhSP());
-                Utils.manggiohang.add(gioHang);
-            }
-
-        } else {
-            int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-            long gia = Long.parseLong(sanPham.getGiaSP()) * soluong;
-            GioHang gioHang = new GioHang();
-            gioHang.setGiaspGH(gia);
-            gioHang.setSoluongGH(soluong);
-            gioHang.setMaspGH(sanPham.getMaSP());
-            gioHang.setTenspGH(sanPham.getTenSP());
-            gioHang.setHinhspGH(sanPham.getHinhAnhSP());
-            Utils.manggiohang.add(gioHang);
-
-        }
-        badge.setText(String.valueOf(Utils.manggiohang.size()));
     }
 
     private void initData() {
-        sanPham = sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
+        SanPham sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
         tensp.setText(sanPham.getTenSP());
         mota.setText(sanPham.getMoTa());
         Glide.with(getApplicationContext()).load(sanPham.getHinhAnhSP()).into(imghinhanh);
@@ -111,10 +55,6 @@ public class ChiTietActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         imghinhanh = findViewById(R.id.imageChitiet);
         toolbar = findViewById(R.id.toolbarchitiet);
-        badge = findViewById(R.id.menu_sl);
-        if (Utils.manggiohang != null){
-            badge.setText(String.valueOf(Utils.manggiohang.size()));
-        }
     }
 
     private void ActionToolBar() {
