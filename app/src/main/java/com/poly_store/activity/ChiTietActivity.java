@@ -1,16 +1,17 @@
 package com.poly_store.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.nex3z.notificationbadge.NotificationBadge;
@@ -19,9 +20,7 @@ import com.poly_store.model.GioHang;
 import com.poly_store.model.SanPham;
 import com.poly_store.utils.Utils;
 
-import java.text.DecimalFormat;
-
-public class ChiTietActivity extends AppCompatActivity {
+ public class ChiTietActivity extends AppCompatActivity {
     TextView tensp, giasp, mota;
     Button btnthem;
     ImageView imghinhanh;
@@ -87,16 +86,22 @@ public class ChiTietActivity extends AppCompatActivity {
             Utils.manggiohang.add(gioHang);
 
         }
-        badge.setText(String.valueOf(Utils.manggiohang.size()));
+        int totalItem = 0;
+        for (int i=0; i<Utils.manggiohang.size(); i++ ){
+            totalItem= totalItem + Utils.manggiohang.get(i).getSoluongGH();
+
+        }
+        badge.setText(String.valueOf(totalItem));
     }
 
     private void initData() {
         sanPham = sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
         tensp.setText(sanPham.getTenSP());
         mota.setText(sanPham.getMoTa());
+        giasp.setText(sanPham.getGiaSP());
         Glide.with(getApplicationContext()).load(sanPham.getHinhAnhSP()).into(imghinhanh);
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+//        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+//        giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
         Integer[] so = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ArrayAdapter<Integer> adapterspin = new ArrayAdapter<>(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item, so);
         spinner.setAdapter(adapterspin);
@@ -112,10 +117,28 @@ public class ChiTietActivity extends AppCompatActivity {
         imghinhanh = findViewById(R.id.imageChitiet);
         toolbar = findViewById(R.id.toolbarchitiet);
         badge = findViewById(R.id.menu_sl);
+        FrameLayout frameLayoutgiohang = findViewById(R.id.framegiohang);
+        frameLayoutgiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
+                startActivity(giohang);
+            }
+        });
+
         if (Utils.manggiohang != null){
-            badge.setText(String.valueOf(Utils.manggiohang.size()));
+            int totalItem = 0;
+            for (int i=0; i<Utils.manggiohang.size(); i++ ){
+                totalItem= totalItem + Utils.manggiohang.get(i).getSoluongGH();
+
+            }
+            badge.setText(String.valueOf(totalItem));
         }
-    }
+
+
+
+        }
+
 
     private void ActionToolBar() {
         setSupportActionBar(toolbar);

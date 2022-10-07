@@ -18,7 +18,6 @@ import com.poly_store.R;
 import com.poly_store.activity.ChiTietActivity;
 import com.poly_store.model.SanPham;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class AoKhoacAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -53,8 +52,9 @@ public class AoKhoacAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             MyViewHolder myViewHolder = (MyViewHolder) holder;
             SanPham sanPham = array.get(position);
             myViewHolder.tensp.setText(sanPham.getTenSP().trim());
-            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-            myViewHolder.giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+            myViewHolder.giasp.setText(sanPham.getGiaSP().trim());
+//            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+//            myViewHolder.giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
 //            myViewHolder.mota.setText(sanPham.getMoTa());
             Glide.with(context).load(sanPham.getHinhAnhSP()).into(myViewHolder.hinhanh);
             myViewHolder.setItemClickListener(new ItemClickListener() {

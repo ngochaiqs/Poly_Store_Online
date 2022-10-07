@@ -1,15 +1,65 @@
 package com.poly_store.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.poly_store.R;
+import com.poly_store.adapter.GioHangAdapter;
+import com.poly_store.utils.Utils;
+
 public class GioHangActivity extends AppCompatActivity {
+        TextView giohangtrong, tongtien;
+        Toolbar toolbar;
+        RecyclerView recyclerViewl;
+        Button btnmuahang;
+        GioHangAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gio_hang);
+        initView();
+        initControl();
+
+    }
+    private void initControl(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        recyclerViewl.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewl.setLayoutManager(layoutManager);
+        if(Utils.manggiohang.size()==0){
+            giohangtrong.setVisibility(View.VISIBLE);
+
+        }else {
+            adapter = new GioHangAdapter(getApplicationContext(),Utils.manggiohang);
+            recyclerViewl.setAdapter(adapter);
+        }
+
+
+
+
+
+    }
+    private void initView(){
+        giohangtrong = findViewById(R.id.txtgiohangtrong);
+        tongtien = findViewById(R.id.txttongtien);
+        toolbar = findViewById(R.id.toobar);
+        recyclerViewl = findViewById(R.id.recycleviewgiohang);
+        btnmuahang = findViewById(R.id.btnmuahang);
+
     }
 }

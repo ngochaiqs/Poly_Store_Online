@@ -17,7 +17,6 @@ import com.poly_store.R;
 import com.poly_store.activity.ChiTietActivity;
 import com.poly_store.model.SanPham;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHolder> {
@@ -40,8 +39,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         SanPham sanPham = sanPhamList.get(position);
         holder.txtTenSP.setText(sanPham.getTenSP());
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.txtGiaSP.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+        holder.txtGiaSP.setText(sanPham.getGiaSP().trim());
+//        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+//        holder.txtGiaSP.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
         Glide.with(context).load(sanPham.getHinhAnhSP()).into(holder.imgSP);
         holder.setItemClickListener(new ItemClickListener() {
             @Override
