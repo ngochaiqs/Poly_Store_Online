@@ -41,7 +41,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         SanPham sanPham = sanPhamList.get(position);
         holder.txtTenSP.setText(sanPham.getTenSP());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.txtGiaSP.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+        holder.txtGiaSP.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiaSP())) + " Đ");
         Glide.with(context).load(sanPham.getHinhAnhSP()).into(holder.imgSP);
         holder.setItemClickListener(new ItemClickListener() {
             @Override

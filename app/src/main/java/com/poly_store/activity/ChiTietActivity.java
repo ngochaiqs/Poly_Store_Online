@@ -96,7 +96,7 @@ public class ChiTietActivity extends AppCompatActivity {
         mota.setText(sanPham.getMoTa());
         Glide.with(getApplicationContext()).load(sanPham.getHinhAnhSP()).into(imghinhanh);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+        giasp.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiaSP())) + " Đ");
         Integer[] so = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ArrayAdapter<Integer> adapterspin = new ArrayAdapter<>(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item, so);
         spinner.setAdapter(adapterspin);
