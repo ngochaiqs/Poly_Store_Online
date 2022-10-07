@@ -20,7 +20,9 @@ import com.poly_store.model.GioHang;
 import com.poly_store.model.SanPham;
 import com.poly_store.utils.Utils;
 
- public class ChiTietActivity extends AppCompatActivity {
+import java.text.DecimalFormat;
+
+public class ChiTietActivity extends AppCompatActivity {
     TextView tensp, giasp, mota;
     Button btnthem;
     ImageView imghinhanh;
@@ -100,8 +102,8 @@ import com.poly_store.utils.Utils;
         mota.setText(sanPham.getMoTa());
         giasp.setText(sanPham.getGiaSP());
         Glide.with(getApplicationContext()).load(sanPham.getHinhAnhSP()).into(imghinhanh);
-//        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-//        giasp.setText("Giá: " + decimalFormat.format(sanPham.getGiaSP()) + " Đ");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        giasp.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiaSP())) + " Đ");
         Integer[] so = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ArrayAdapter<Integer> adapterspin = new ArrayAdapter<>(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item, so);
         spinner.setAdapter(adapterspin);
