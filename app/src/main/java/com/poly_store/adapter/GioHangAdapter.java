@@ -1,6 +1,7 @@
 package com.poly_store.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +18,7 @@ import com.poly_store.Interface.IImageClickListenner;
 import com.poly_store.R;
 import com.poly_store.model.EventBus.TinhTongEvent;
 import com.poly_store.model.GioHang;
+import com.poly_store.utils.Utils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -56,7 +59,32 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                     if (gioHangList.get(pos).getSoluongGH() > 1){
                     int soluongmoi = gioHangList.get(pos).getSoluongGH()-1;
                     gioHangList.get(pos).setSoluongGH(soluongmoi);
-                }
+
+                    holder.item_giohang_soluong.setText((gioHangList.get(pos).getSoluongGH() + ""));
+                    long gia = gioHangList.get(pos).getSoluongGH() * gioHangList.get(pos).getGiaspGH();
+                    holder.item_giohang_giasp2.setText(decimalFormat.format(gia));
+                    EventBus.getDefault().postSticky(new TinhTongEvent());
+
+                    }else if (gioHangList.get(pos).getSoluongGH() ==1){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                        builder.setTitle("Thong bao");
+                        builder.setMessage("Ban co muon xoa san pham nay khoi gio hang khong?");
+                        builder.setPositiveButton("Dong y", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Utils.manggiohang.remove(pos);
+                                notifyDataSetChanged();
+                                EventBus.getDefault().postSticky(new TinhTongEvent());
+                            }
+                        });
+                        builder.setNegativeButton("Huy", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.show();
+                    }
                 }else if(giatri == 2){
                 if (gioHangList.get(pos).getSoluongGH() < 11){
                 int soluongmoi = gioHangList.get(pos).getSoluongGH()+1;
@@ -64,10 +92,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                 }
 
               }
-                holder.item_giohang_soluong.setText((gioHangList.get(pos).getSoluongGH() + ""));
-                long gia = gioHangList.get(pos).getSoluongGH() * gioHangList.get(pos).getGiaspGH();
-                holder.item_giohang_giasp2.setText(decimalFormat.format(gia));
-                EventBus.getDefault().postSticky(new TinhTongEvent());
+
 
             }
 
