@@ -34,11 +34,11 @@ public class GioHangActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gio_hang);
         initView();
         initControl();
-        tinhTonhTien();
+        tinhTongTien();
 
     }
 
-    private void tinhTonhTien() {
+    private void tinhTongTien() {
         long tongtiensp = 0;
         for (int i = 0; i<Utils.manggiohang.size(); i++){
             tongtiensp = tongtiensp+ (Utils.manggiohang.get(i).getGiaspGH()* Utils.manggiohang.get(i).getSoluongGH());
@@ -86,14 +86,14 @@ public class GioHangActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
 
     }
-    protected  void onStop(){
+    protected void onStop(){
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
     @Subscribe(sticky = true , threadMode = ThreadMode.MAIN)
-    public void envienTInhTien(TinhTongEvent event){
+    public void eventTinhTien(TinhTongEvent event){
         if (event != null){
-            tinhTonhTien();
+            tinhTongTien();
         }
     }
 }

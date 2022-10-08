@@ -22,7 +22,7 @@
         android:id="@+id/toobar"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Giỏ hàng"
-        android:background="#24F40D"
+        android:background="#74A7FF"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
     <androidx.recyclerview.widget.RecyclerView

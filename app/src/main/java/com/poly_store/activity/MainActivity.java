@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
         }else {
             int totalItem = 0;
-            for (int i=0; i<Utils.manggiohang.size(); i++ ){
+            for (int i=0; i<Utils.manggiohang.size(); i++){
                 totalItem= totalItem + Utils.manggiohang.get(i).getSoluongGH();
 
             }
