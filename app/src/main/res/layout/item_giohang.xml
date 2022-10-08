@@ -36,17 +36,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/item_giohang_gia"
-                    android:text="150000 đ"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15sp"
-                    android:layout_weight="5"
-                    android:textColor="@android:color/holo_red_light"
-                    android:width="0dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:width="0dp"
+                    android:text="150000 đ"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="15sp" />
                 <ImageView
                     android:src="@drawable/ic_baseline_remove_24"
                     android:id="@+id/item_giohang_tru"
@@ -78,7 +78,6 @@
                     android:text="250000 đ"
                     android:gravity="center|center_vertical"
                     android:layout_weight="5"
-                    android:textSize="15sp"
                     android:textColor="@android:color/holo_red_light"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>

@@ -55,7 +55,7 @@ public class AoKhoacAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             myViewHolder.tensp.setText(sanPham.getTenSP().trim());
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
             myViewHolder.giasp.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiaSP())) + " Đ");
-//            myViewHolder.mota.setText(sanPham.getMoTa());
+            myViewHolder.mota.setText(sanPham.getMoTa());
             Glide.with(context).load(sanPham.getHinhAnhSP()).into(myViewHolder.hinhanh);
             myViewHolder.setItemClickListener(new ItemClickListener() {
                 @Override

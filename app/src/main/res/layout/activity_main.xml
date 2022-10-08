@@ -20,8 +20,25 @@
                 android:id="@+id/toolbarMain"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Trang chủ"
-                android:background="#C8EDF8">
+                android:background="#C8EDF8"
+                app:title="Trang chủ">
+                <FrameLayout
+                    android:id="@+id/framegiohang"
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="right"
+                    android:layout_width="56dp"
+                    android:layout_height="?attr/actionBarSize">
+                    <com.nex3z.notificationbadge.NotificationBadge
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:id="@+id/menu_sl"
+                        android:layout_gravity="top|right"/>
+                    <ImageView
+                        android:layout_marginTop="15dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_cart_24"/>
+                </FrameLayout>
             </androidx.appcompat.widget.Toolbar>
 
             <ViewFlipper
