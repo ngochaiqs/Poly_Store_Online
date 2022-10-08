@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store.R;
 import com.poly_store.adapter.LoaiSPAdapter;
 import com.poly_store.adapter.SanPhamAdapter;
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     ApiBanHang apiBanHang;
     List<SanPham> sanPhamList;
     SanPhamAdapter sanPhamAdapter;
+    NotificationBadge badge;
+    FrameLayout frameLayout;
 
 
     @Override
@@ -140,13 +144,42 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationView);
         lvMain = findViewById(R.id.lvMain);
         drawerLayout = findViewById(R.id.drawerlayout);
+         badge = findViewById(R.id.menu_sl);
+        frameLayout = findViewById(R.id.framegiohang);
         //khoi tao list
         loaiSPList = new ArrayList<>();
         sanPhamList = new ArrayList<>();
         if (Utils.manggiohang == null){
             Utils.manggiohang = new ArrayList<>();
+
+        }else {
+            int totalItem = 0;
+            for (int i=0; i<Utils.manggiohang.size(); i++ ){
+                totalItem= totalItem + Utils.manggiohang.get(i).getSoluongGH();
+
+            }
+            badge.setText(String.valueOf(totalItem));
         }
+
+        frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
+                startActivity(giohang);
+            }
+        });
         
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int totalItem = 0;
+        for (int i=0; i<Utils.manggiohang.size(); i++ ){
+            totalItem= totalItem + Utils.manggiohang.get(i).getSoluongGH();
+
+        }
+     badge.setText(String.valueOf(totalItem));
     }
 
     private void ActionViewFlipper(){

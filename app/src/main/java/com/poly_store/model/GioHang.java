@@ -49,4 +49,5 @@ public class GioHang {
     public void setSoluongGH(int soluongGH) {
         this.soluongGH = soluongGH;
     }
+
 }
