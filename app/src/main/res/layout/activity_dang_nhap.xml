@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@id/txtdangnhap"
         android:layout_marginTop="5dp"
         android:id="@+id/line1"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/line1"
         android:layout_marginTop="5dp"
         android:id="@+id/line2"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >

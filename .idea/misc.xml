@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="..\:/Do_An/app/src/main/res/drawable-v24/bg_corner_14.xml" value="0.134" />
         <entry key="..\:/Do_An/app/src/main/res/drawable-v24/bg_corner_16.xml" value="0.134" />
         <entry key="..\:/Do_An/app/src/main/res/drawable-v24/bg_corner_18.xml" value="0.134" />
@@ -28,7 +29,9 @@
         <entry key="app/src/main/res/layout/activity_chi_tiet_main.xml" value="0.11144883485309018" />
         <entry key="app/src/main/res/layout/activity_dang_ky.xml" value="0.18649139404296877" />
         <entry key="app/src/main/res/layout/activity_dang_nhap.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_gio_hang.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_thanh_toan.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_aokhoac.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.1037037037037037" />
         <entry key="app/src/main/res/layout/item_loaisp.xml" value="0.1037037037037037" />
