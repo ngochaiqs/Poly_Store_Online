@@ -67,9 +67,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
 
                     }else if (gioHangList.get(pos).getSoluongGH() ==1){
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
-                        builder.setTitle("Thong bao");
-                        builder.setMessage("Ban co muon xoa san pham nay khoi gio hang khong?");
-                        builder.setPositiveButton("Dong y", new DialogInterface.OnClickListener() {
+                        builder.setTitle("Thông báo");
+                        builder.setMessage("Bạn có muốn xóa sản phẩm này không?");
+                        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Utils.manggiohang.remove(pos);
@@ -77,7 +77,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                                 EventBus.getDefault().postSticky(new TinhTongEvent());
                             }
                         });
-                        builder.setNegativeButton("Huy", new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
@@ -92,7 +92,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                 }
 
               }
-
+                holder.item_giohang_soluong.setText((gioHangList.get(pos).getSoluongGH() + ""));
+                long gia = gioHangList.get(pos).getSoluongGH() * gioHangList.get(pos).getGiaspGH();
+                holder.item_giohang_giasp2.setText(decimalFormat.format(gia));
+                EventBus.getDefault().postSticky(new TinhTongEvent());
 
             }
 

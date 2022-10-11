@@ -75,6 +75,8 @@ public class DangNhapActivity extends AppCompatActivity {
                             .subscribe(
                                     nguoiDungModel -> {
                                         if (nguoiDungModel.isSuccess()){
+
+
                                             Utils.nguoidung_current = nguoiDungModel.getResult().get(0);
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);

@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Thanh toan"
+        app:title="Thanh toán"
         android:background="#74A7FF"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
@@ -78,7 +78,7 @@
                 <TextView
                     android:id="@+id/txtsdt"
                     android:layout_gravity="center"
-                    android:text="098484848"
+                    android:text="0911602532"
                     android:textSize="15sp"
                     android:textColor="@android:color/holo_red_light"
                     android:textStyle="bold"
@@ -110,7 +110,7 @@
                 <TextView
                     android:id="@+id/txtemail"
                     android:layout_gravity="center"
-                    android:text="example@gmail.cm"
+                    android:text="example@gmail.com"
                     android:textSize="15sp"
                     android:textColor="@android:color/holo_red_light"
                     android:textStyle="bold"
@@ -137,7 +137,7 @@
             android:drawablePadding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhap dia chi giao hang"
+            android:hint="Nhập địa chỉ giao hàng"
             android:textColorHint="@android:color/holo_red_light"
             >
 
@@ -153,7 +153,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/background_button"
-        android:text="Dat hang"
+        android:text="Đặt hàng"
         android:textColor="@android:color/white"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.poly_store.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -52,8 +53,11 @@ public class ThanhToanActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String str_diachi = edtdiachi.getText().toString().trim();
                 if (TextUtils.isEmpty(str_diachi)){
-                    Toast.makeText(getApplicationContext(), "Ban chua nhap dia chi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập địa chỉ!", Toast.LENGTH_SHORT).show();
                 }else{
+                    Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                     Log.d("test", new Gson().toJson(Utils.manggiohang));
                 }
             }
