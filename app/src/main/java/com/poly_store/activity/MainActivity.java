@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     SanPhamAdapter sanPhamAdapter;
     NotificationBadge badge;
     FrameLayout frameLayout;
+    ImageView imgsearch;
 
 
     @Override
@@ -98,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
                         aoThun.putExtra("maLoai",3);
                         startActivity(aoThun);
                         break;
+                    case 4:
+                        Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
+                        startActivity(donHang);
+                        break;
                 }
             }
         });
@@ -135,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AnhXa() {
+        imgsearch = findViewById(R.id.imgsearch);
         toolbar = findViewById(R.id.toolbarMain);
         viewFlipper = findViewById(R.id.viewLipper);
         recyclerViewMain = findViewById(R.id.recyclerviewMain);
@@ -166,6 +172,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
                 startActivity(giohang);
+            }
+        });
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TimKiemActivity.class);
+                startActivity(intent);
             }
         });
         
@@ -223,4 +236,5 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
+
 }

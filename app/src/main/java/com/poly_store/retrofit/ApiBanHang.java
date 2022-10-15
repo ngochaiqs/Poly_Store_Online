@@ -1,5 +1,6 @@
 package com.poly_store.retrofit;
 
+import com.poly_store.model.DonHangModel;
 import com.poly_store.model.LoaiSPModel;
 import com.poly_store.model.NguoiDungModel;
 import com.poly_store.model.SanPhamModel;
@@ -44,6 +45,32 @@ public interface ApiBanHang {
     @FormUrlEncoded
     Observable<NguoiDungModel> quenMK(
             @Field("email") String email
+
+    );
+
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Observable<NguoiDungModel> datHang(
+            @Field("email") String email,
+            @Field("SDT") String SDT,
+            @Field("tongTien") String tongTien,
+            @Field("maND") int maND,
+            @Field("diaChi") String diaChi,
+            @Field("soLuong") int soLuong,
+            @Field("chiTiet") String chiTiet
+    );
+
+    @POST("xemdonhang.php")
+    @FormUrlEncoded
+    Observable<DonHangModel> xemDonHang(
+            @Field("maND") int maND
+
+    );
+
+    @POST("timkiem.php")
+    @FormUrlEncoded
+    Observable<SanPhamModel> timKiem(
+            @Field("timKiem") String timKiem
 
     );
 }

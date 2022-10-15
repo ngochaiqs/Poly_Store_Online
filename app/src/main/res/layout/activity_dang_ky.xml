@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DangKyActivity">
+
     <TextView
         android:id="@+id/txtdangnhap"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +53,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:drawableLeft="@drawable/email"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
             android:drawablePadding="5dp"
             />
 
@@ -116,7 +117,7 @@
             android:inputType="number"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+            android:drawableLeft="@drawable/ic_baseline_local_phone_24"
             android:drawablePadding="5dp"
             />
 

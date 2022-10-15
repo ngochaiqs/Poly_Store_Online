@@ -42,8 +42,8 @@ public class GioHangActivity extends AppCompatActivity {
 
     private void tinhTongTien() {
        tongtiensp = 0;
-        for (int i = 0; i<Utils.manggiohang.size(); i++){
-            tongtiensp = tongtiensp+ (Utils.manggiohang.get(i).getGiaspGH()* Utils.manggiohang.get(i).getSoluongGH());
+        for (int i = 0; i<Utils.mangmuahang.size(); i++){
+            tongtiensp = tongtiensp+ (Utils.mangmuahang.get(i).getGiaspGH()* Utils.mangmuahang.get(i).getSoluongGH());
 
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
@@ -74,6 +74,7 @@ public class GioHangActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
                 intent.putExtra("tongtien", tongtiensp);
+                Utils.manggiohang.clear();
                 startActivity(intent);
             }
         });
