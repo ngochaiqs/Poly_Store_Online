@@ -2,6 +2,7 @@ package com.poly_store.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ public class DangNhapActivity extends AppCompatActivity {
     AppCompatButton btndangnhap;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-
+    boolean isLogin = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,24 +70,7 @@ public class DangNhapActivity extends AppCompatActivity {
 
                     Paper.book().write("email",str_email);
                     Paper.book().write("matKhau",str_matKhau);
-                    compositeDisposable.add(apiBanHang.dangNhap(str_email, str_matKhau)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(
-                                    nguoiDungModel -> {
-                                        if (nguoiDungModel.isSuccess()){
-
-
-                                            Utils.nguoidung_current = nguoiDungModel.getResult().get(0);
-                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    },
-                                    throwable -> {
-                                        Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                            ));
+                    dangNhap(str_email, str_matKhau);
                 }
             }
         });
@@ -106,7 +90,39 @@ public class DangNhapActivity extends AppCompatActivity {
         if (Paper.book().read("email") != null && Paper.book().read("matKhau") != null){
             email.setText(Paper.book().read("email"));
             matKhau.setText(Paper.book().read("matKhau"));
+            if (Paper.book().read("isLogin") != null){
+                boolean flag = Paper.book().read("isLogin");
+                if(flag){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dangNhap(Paper.book().read("email"), Paper.book().read("matKhau"));
+                        }
+                    }, 1000);
+                }
+            }
         }
+    }
+
+    private void dangNhap(String email, String matKhau) {
+        compositeDisposable.add(apiBanHang.dangNhap(email, matKhau)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        nguoiDungModel -> {
+                            if (nguoiDungModel.isSuccess()){
+                                isLogin = true;
+                                Paper.book().write("isLogin",isLogin);
+                                Utils.nguoidung_current = nguoiDungModel.getResult().get(0);
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        },
+                        throwable -> {
+                            Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                ));
     }
 
     @Override

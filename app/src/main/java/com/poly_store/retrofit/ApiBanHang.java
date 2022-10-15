@@ -46,4 +46,16 @@ public interface ApiBanHang {
             @Field("email") String email
 
     );
+
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Observable<NguoiDungModel> datHang(
+            @Field("email") String email,
+            @Field("SDT") String SDT,
+            @Field("tongTien") String tongTien,
+            @Field("maND") int maND,
+            @Field("diaChi") String diaChi,
+            @Field("soLuong") int soLuong,
+            @Field("chiTiet") String chiTiet
+    );
 }
