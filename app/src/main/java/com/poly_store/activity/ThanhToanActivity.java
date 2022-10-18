@@ -3,7 +3,6 @@ package com.poly_store.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,8 +45,8 @@ public class ThanhToanActivity extends AppCompatActivity {
 
     private void countItem() {
         totalItem = 0;
-        for (int i=0; i<Utils.mangmuahang.size(); i++ ){
-            totalItem= totalItem + Utils.mangmuahang.get(i).getSoluongGH();
+        for (int i=0; i<Utils.manggiohang.size(); i++ ){
+            totalItem= totalItem + Utils.manggiohang.get(i).getSoluongGH();
 
         }
     }
@@ -78,8 +77,11 @@ public class ThanhToanActivity extends AppCompatActivity {
                     String str_email = Utils.nguoidung_current.getEmail();
                     String str_sdt = Utils.nguoidung_current.getSDT();
                     int maND = Utils.nguoidung_current.getMaND();
+
                     Log.d("test", new Gson().toJson(Utils.mangmuahang));
                     compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_diachi, totalItem, new Gson().toJson(Utils.mangmuahang))
+
+                    compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_diachi, totalItem, new Gson().toJson(Utils.manggiohang))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(nguoiDungModel -> {
