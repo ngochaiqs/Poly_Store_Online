@@ -77,11 +77,16 @@ public class ThanhToanActivity extends AppCompatActivity {
                     String str_email = Utils.nguoidung_current.getEmail();
                     String str_sdt = Utils.nguoidung_current.getSDT();
                     int maND = Utils.nguoidung_current.getMaND();
+
+                    Log.d("test", new Gson().toJson(Utils.mangmuahang));
+                    compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_diachi, totalItem, new Gson().toJson(Utils.mangmuahang))
+
                     compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_diachi, totalItem, new Gson().toJson(Utils.manggiohang))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(nguoiDungModel -> {
                                     Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                                    Utils.mangmuahang.clear();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();
