@@ -24,11 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.annotations.Until;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store.R;
 import com.poly_store.adapter.LoaiSPAdapter;
 import com.poly_store.adapter.SanPhamAdapter;
 import com.poly_store.model.LoaiSP;
+import com.poly_store.model.NguoiDung;
 import com.poly_store.model.SanPham;
 import com.poly_store.retrofit.ApiBanHang;
 import com.poly_store.retrofit.RetrofitClient;
@@ -64,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Paper.init(this);
+        if (Paper.book().read("nguoidung") != null){
+            NguoiDung nguoiDung = Paper.book().read("nguoidung");
+            Utils.nguoidung_current = nguoiDung;
+        }
         AnhXa();
         ActionViewFlipper();
         ActionBar();
@@ -100,15 +107,16 @@ public class MainActivity extends AppCompatActivity {
                         aoThun.putExtra("maLoai",3);
                         startActivity(aoThun);
                         break;
-                    case 3:
+                    case 5:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
                         startActivity(donHang);
                         break;
-                    case 4:
+                    case 6:
                         Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
                         startActivity(quanli);
                         break;
-                    case 5:
+                    case 7:
+                        // xóa key nguoidung
                         Paper.book().delete("user");
                         Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
                         startActivity(dangnhap);
