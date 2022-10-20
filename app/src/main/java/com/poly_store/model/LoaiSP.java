@@ -2,6 +2,12 @@ package com.poly_store.model;
 
 public class LoaiSP {
     int maLoai;
+
+    public LoaiSP(String tenLoai, String hinhAnh) {
+        this.tenLoai = tenLoai;
+        this.hinhAnh = hinhAnh;
+    }
+
     String tenLoai;
     String hinhAnh;
 

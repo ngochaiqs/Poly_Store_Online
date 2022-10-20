@@ -37,6 +37,7 @@ import com.poly_store.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -99,9 +100,19 @@ public class MainActivity extends AppCompatActivity {
                         aoThun.putExtra("maLoai",3);
                         startActivity(aoThun);
                         break;
-                    case 4:
+                    case 3:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
                         startActivity(donHang);
+                        break;
+                    case 4:
+                        Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
+                        startActivity(quanli);
+                        break;
+                    case 5:
+                        Paper.book().delete("user");
+                        Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
+                        startActivity(dangnhap);
+                        finish();
                         break;
                 }
             }
@@ -132,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
                         loaiSPModel -> {
                             if (loaiSPModel.isSuccess()){
                                 loaiSPList = loaiSPModel.getResult();
+                                loaiSPList.add(new LoaiSP("Quản lý",""));
+                                loaiSPList.add(new LoaiSP("Đăng xuất",""));
                                 loaiSPAdapter = new LoaiSPAdapter(getApplicationContext(),loaiSPList);
                                 lvMain.setAdapter(loaiSPAdapter);
                             }

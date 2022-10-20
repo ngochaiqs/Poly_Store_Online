@@ -75,5 +75,7 @@ dependencies {
 
     //lottie
     implementation("com.airbnb.android:lottie:5.2.0")
+    //neumorphism
+    implementation 'com.github.fornewid:neumorphism:0.3.2'
 }
 
