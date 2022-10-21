@@ -24,11 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.annotations.Until;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store.R;
 import com.poly_store.adapter.LoaiSPAdapter;
 import com.poly_store.adapter.SanPhamAdapter;
 import com.poly_store.model.LoaiSP;
+import com.poly_store.model.NguoiDung;
 import com.poly_store.model.SanPham;
 import com.poly_store.retrofit.ApiBanHang;
 import com.poly_store.retrofit.RetrofitClient;
@@ -37,6 +39,7 @@ import com.poly_store.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -63,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Paper.init(this);
+        if (Paper.book().read("nguoidung") != null){
+            NguoiDung nguoiDung = Paper.book().read("nguoidung");
+            Utils.nguoidung_current = nguoiDung;
+        }
         AnhXa();
         ActionViewFlipper();
         ActionBar();
@@ -99,9 +107,20 @@ public class MainActivity extends AppCompatActivity {
                         aoThun.putExtra("maLoai",3);
                         startActivity(aoThun);
                         break;
-                    case 4:
+                    case 5:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
                         startActivity(donHang);
+                        break;
+                    case 6:
+                        Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
+                        startActivity(quanli);
+                        break;
+                    case 7:
+                        // xóa key nguoidung
+                        Paper.book().delete("user");
+                        Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
+                        startActivity(dangnhap);
+                        finish();
                         break;
                 }
             }
@@ -132,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
                         loaiSPModel -> {
                             if (loaiSPModel.isSuccess()){
                                 loaiSPList = loaiSPModel.getResult();
+                                loaiSPList.add(new LoaiSP("Quản lý",""));
+                                loaiSPList.add(new LoaiSP("Đăng xuất",""));
                                 loaiSPAdapter = new LoaiSPAdapter(getApplicationContext(),loaiSPList);
                                 lvMain.setAdapter(loaiSPAdapter);
                             }
