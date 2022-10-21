@@ -4,7 +4,7 @@ public class Item {
     int maSP;
     String tenSP;
     int soLuong;
-    String hinhAnh;
+    String hinhAnhSP;
 
     public int getSoLuong() {
         return soLuong;
@@ -14,12 +14,12 @@ public class Item {
         this.soLuong = soLuong;
     }
 
-    public String getHinhAnh() {
-        return hinhAnh;
+    public String getHinhAnhSP() {
+        return hinhAnhSP;
     }
 
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
+    public void setHinhAnhSP(String hinhAnh) {
+        this.hinhAnhSP = hinhAnhSP;
     }
 
     public int getMaSP() {

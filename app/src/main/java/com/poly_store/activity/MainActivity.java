@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
-import com.google.gson.annotations.Until;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store.R;
 import com.poly_store.adapter.LoaiSPAdapter;
@@ -95,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (i){
                     case 0:
                         Intent trangChu = new Intent(MainActivity.this, MainActivity.class);
+                        trangChu.putExtra("maLoai",1);
                         startActivity(trangChu);
                         break;
                     case 1:
@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 5:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
+                        donHang.putExtra("maLoai",6);
                         startActivity(donHang);
                         break;
                     case 6:

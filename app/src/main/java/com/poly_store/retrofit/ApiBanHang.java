@@ -61,7 +61,7 @@ public interface ApiBanHang {
     );
 
 
-    @POST("xemdonhang.php")
+    @POST("xemdon.php")
     @FormUrlEncoded
     Observable<DonHangModel> xemDonHang(
             @Field("maND") int maND
