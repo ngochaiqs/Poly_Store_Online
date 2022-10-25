@@ -68,7 +68,7 @@ public interface ApiBanHang {
 
     );
 
-    @POST("timkiem.php")
+    @POST("timkiemsp.php")
     @FormUrlEncoded
     Observable<SanPhamModel> timKiem(
             @Field("timKiem") String timKiem
