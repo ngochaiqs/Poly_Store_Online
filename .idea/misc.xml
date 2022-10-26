@@ -36,6 +36,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.180230712890625" />
         <entry key="app/src/main/res/layout/activity_quan_li.xml" value="0.1272644927536232" />
         <entry key="app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_reset_pass.xml" value="0.18795289855072464" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18795289855072464" />
         <entry key="app/src/main/res/layout/activity_tim_kiem.xml" value="0.1272644927536232" />
         <entry key="app/src/main/res/layout/activity_xem_don.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_aokhoac.xml" value="0.1" />
@@ -44,7 +46,7 @@
         <entry key="app/src/main/res/layout/item_giohang.xml" value="0.1272644927536232" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.1037037037037037" />
         <entry key="app/src/main/res/layout/item_loaisp.xml" value="0.1037037037037037" />
-        <entry key="app/src/main/res/layout/item_sanpham.xml" value="0.1037037037037037" />
+        <entry key="app/src/main/res/layout/item_sanpham.xml" value="0.1" />
       </map>
     </option>
   </component>
