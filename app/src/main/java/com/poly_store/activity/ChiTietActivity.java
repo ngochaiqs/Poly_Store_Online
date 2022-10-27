@@ -97,7 +97,7 @@ public class ChiTietActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        sanPham = sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
+        sanPham = (SanPham) getIntent().getSerializableExtra("chitiet");
         tensp.setText(sanPham.getTenSP());
         mota.setText(sanPham.getMoTa());
         giasp.setText(sanPham.getGiaSP());
