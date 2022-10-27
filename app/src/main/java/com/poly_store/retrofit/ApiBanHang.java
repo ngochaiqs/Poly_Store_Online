@@ -76,13 +76,13 @@ public interface ApiBanHang {
 
     );
 
-    @POST("insertsp.php")
+    @POST("themsp.php")
     @FormUrlEncoded
-    Observable<MessageModel> insertSp(
+    Observable<MessageModel> themSP(
             @Field("tenSP") String tenSP,
-            @Field("gia") String gia,
-            @Field("hinhanh") String hinhanh,
-            @Field("mota") String mota,
-            @Field("loai") int id
+            @Field("giaSP") String giaSP,
+            @Field("hinhAnhSP") String hinhAnhSP,
+            @Field("moTa") String moTa,
+            @Field("maLoai") int maLoai
     );
 }

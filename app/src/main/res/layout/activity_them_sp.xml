@@ -22,9 +22,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:hint="Tên sản phẩm"
-            android:id="@+id/tensp"
+            android:id="@+id/tenspthemsp"
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -38,9 +38,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:hint="Gía sản phẩm"
-            android:id="@+id/giasp"
+            android:id="@+id/giaspthemsp"
             android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -55,9 +55,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:hint="Hình ảnh"
-            android:id="@+id/hinhanh"
+            android:id="@+id/hinhanhthemsp"
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -72,9 +72,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:hint="Mô tả"
-            android:id="@+id/mota"
+            android:id="@+id/motathemsp"
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnthem"
+        android:id="@+id/btnthemsp"
         app:layout_constraintTop_toBottomOf="@+id/spinner_loai"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
