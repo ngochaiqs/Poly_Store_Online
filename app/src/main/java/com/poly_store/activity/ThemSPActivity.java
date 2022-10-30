@@ -1,38 +1,58 @@
 package com.poly_store.activity;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.poly_store.R;
 import com.poly_store.databinding.ActivityThemSpBinding;
+import com.poly_store.model.MessageModel;
 import com.poly_store.retrofit.ApiBanHang;
 import com.poly_store.retrofit.RetrofitClient;
 import com.poly_store.utils.Utils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ThemSPActivity extends AppCompatActivity {
     Spinner spinner;
     AppCompatButton btnThemSP;
     EditText edtTenSP, edtGiaSP, edtHinhAnhSP, edtMoTaSP;
     int loai=0;
+    ImageView imgcamera;
     ActivityThemSpBinding binding;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+    String mediaPath;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +94,25 @@ public class ThemSPActivity extends AppCompatActivity {
             }
         });
 
+        imgcamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.with(ThemSPActivity.this)
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mediaPath = data.getDataString();
+        uploadMultipleFile();
+        Log.d("LOG","onActivityResult: " +mediaPath);
     }
 
     private void themsanpham() {
@@ -107,13 +146,65 @@ public class ThemSPActivity extends AppCompatActivity {
         }
     }
 
+    private String getPath(Uri uri){
+        String result;
+        Cursor cursor = getContentResolver().query(uri, null, null , null, null);
+        if (cursor == null){
+            result = uri.getPath();
+        }else{
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(index);
+            cursor.close();
+        }
+        return result;
+    }
+
+    private void uploadMultipleFile() {
+        Uri uri = Uri.parse(mediaPath);
+
+        // Map is used to multipart the file using okhttp3.RequestBody
+        File file = new File(getPath(uri));
+
+        // Parsing any Media type file
+        RequestBody requestBody1 = RequestBody.create(MediaType.parse("*/*"), file);
+        MultipartBody.Part fileToUpload1 = MultipartBody.Part.createFormData("file", file.getName(), requestBody1);
+
+        retrofit2.Call<MessageModel> call = apiBanHang.uploadFile(fileToUpload1);
+        call.enqueue(new Callback<MessageModel>() {
+            @Override
+            public void onResponse(retrofit2.Call<MessageModel> call, Response<MessageModel> response) {
+                MessageModel serverResponse = response.body();
+                if (serverResponse != null) {
+                    if (serverResponse.isSuccess()) {
+                        binding.hinhanh.setText(serverResponse.getName());
+                    } else {
+                        Toast.makeText(getApplicationContext(), serverResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.v("Response", serverResponse.toString());
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<MessageModel> call, Throwable t) {
+                Log.v("log", t.getMessage());
+
+            }
+        });
+    }
+
+
+
     private void initView(){
         spinner = findViewById(R.id.spinner_loai);
         btnThemSP = findViewById(R.id.btnthemsp);
         edtTenSP = findViewById(R.id.tenspthemsp);
         edtGiaSP = findViewById(R.id.giaspthemsp);
-        edtHinhAnhSP = findViewById(R.id.hinhanhthemsp);
+        edtHinhAnhSP = findViewById(R.id.hinhanh);
         edtMoTaSP = findViewById(R.id.motathemsp);
+        imgcamera = findViewById(R.id.imgcamera);
     }
     @Override
     protected void onDestroy(){
