@@ -99,8 +99,8 @@ public class ThemSPActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ImagePicker.with(ThemSPActivity.this)
                         .crop()	    			//Crop image(Optional), Check Customization for more option
-                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .compress(3072)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(800, 1066)	//Final image resolution will be less than 1080 x 1080(Optional)
                         .start();
             }
         });
@@ -177,7 +177,8 @@ public class ThemSPActivity extends AppCompatActivity {
                 MessageModel serverResponse = response.body();
                 if (serverResponse != null) {
                     if (serverResponse.isSuccess()) {
-                        binding.hinhanh.setText(serverResponse.getName());
+//                        binding.hinhanh.setText(serverResponse.getName());
+                        edtHinhAnhSP.setText(serverResponse.getName());
                     } else {
                         Toast.makeText(getApplicationContext(), serverResponse.getMessage(),Toast.LENGTH_SHORT).show();
                     }
