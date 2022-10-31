@@ -76,6 +76,13 @@ public interface ApiBanHang {
 
     );
 
+    @POST("xoa.php")
+    @FormUrlEncoded
+    Observable<SanPhamModel> xoaSanPham(
+            @Field("maSP") int maSP
+
+    );
+
     @POST("themsp.php")
     @FormUrlEncoded
     Observable<MessageModel> themSP(
@@ -84,5 +91,17 @@ public interface ApiBanHang {
             @Field("hinhAnhSP") String hinhAnhSP,
             @Field("moTa") String moTa,
             @Field("maLoai") int maLoai
+    );
+
+    @POST("updatesp.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updatesp(
+            @Field("tenSP") String tenSP,
+            @Field("giaSP") String giaSP,
+            @Field("hinhAnhSP") String hinhAnhSP,
+            @Field("moTa") String moTa,
+            @Field("maLoai") int maLoai,
+            @Field("maSP") int maSP
+
     );
 }
