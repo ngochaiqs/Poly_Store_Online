@@ -29,6 +29,7 @@ android {
         viewBinding true
         dataBinding true
     }
+    namespace 'com.poly_store'
 }
 
 dependencies {
@@ -81,5 +82,9 @@ dependencies {
     implementation("com.airbnb.android:lottie:5.2.0")
     //neumorphism
     implementation 'com.github.fornewid:neumorphism:0.3.2'
+
+    // image
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
 }
 
