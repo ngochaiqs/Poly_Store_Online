@@ -16,6 +16,7 @@ import com.poly_store.Interface.ItemClickListener;
 import com.poly_store.R;
 import com.poly_store.activity.ChiTietActivity;
 import com.poly_store.model.SanPham;
+import com.poly_store.utils.Utils;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -42,7 +43,15 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         holder.txtTenSP.setText(sanPham.getTenSP());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtGiaSP.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiaSP())) + " Đ");
-        Glide.with(context).load(sanPham.getHinhAnhSP()).into(holder.imgSP);
+        if (sanPham.getHinhAnhSP().contains("http")){
+            Glide.with(context).load(sanPham.getHinhAnhSP()).into(holder.imgSP);
+        }else{
+            String hinh = Utils.BASE_URL+"images/"+sanPham.getHinhAnhSP();
+            Glide.with(context).load(hinh).into(holder.imgSP);
+        }
+
+
+
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void conClick(View view, int pos, boolean isLongClick) {
@@ -86,3 +95,4 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         }
     }
 }
+
