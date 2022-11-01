@@ -55,19 +55,19 @@ public class ChiTietActivity extends AppCompatActivity {
     private void themGioHang() {
         if (Utils.manggiohang.size() > 0) {
             boolean flag = false;
-            int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
+            int soluong = 1;
             for (int i = 0; i < Utils.manggiohang.size(); i++) {
                 if (Utils.manggiohang.get(i).getMaspGH() == sanPham.getMaSP()) {
                     Utils.manggiohang.get(i).setSoluongGH(soluong + Utils.manggiohang.get(i).getSoluongGH());
-                    long gia = Long.parseLong(sanPham.getGiaSP()) * Utils.manggiohang.get(i).getGiaspGH();
+                    long gia = Long.parseLong(sanPham.getGiaSP());
                     Utils.manggiohang.get(i).setGiaspGH(gia);
                     flag = true;
                 }
             }
             if (flag == false) {
-                long gia = Long.parseLong(sanPham.getGiaSP()) * soluong;
+//                long gia = Long.parseLong(sanPham.getGiaSP());
                 GioHang gioHang = new GioHang();
-                gioHang.setGiaspGH(gia);
+                gioHang.setGiaspGH(Long.parseLong(sanPham.getGiaSP()));
                 gioHang.setSoluongGH(soluong);
                 gioHang.setMaspGH(sanPham.getMaSP());
                 gioHang.setTenspGH(sanPham.getTenSP());
@@ -76,10 +76,10 @@ public class ChiTietActivity extends AppCompatActivity {
             }
 
         } else {
-            int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-            long gia = Long.parseLong(sanPham.getGiaSP()) * soluong;
+            int soluong = 1;
+//            long gia = Long.parseLong(sanPham.getGiaSP());
             GioHang gioHang = new GioHang();
-            gioHang.setGiaspGH(gia);
+            gioHang.setGiaspGH(Long.parseLong(sanPham.getGiaSP()));
             gioHang.setSoluongGH(soluong);
             gioHang.setMaspGH(sanPham.getMaSP());
             gioHang.setTenspGH(sanPham.getTenSP());

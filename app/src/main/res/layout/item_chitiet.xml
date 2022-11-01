@@ -20,26 +20,27 @@
                 android:layout_width="100dp"
                 android:layout_height="120dp"
                 android:src="@drawable/ic_baseline_person_24" />
+
             <LinearLayout
-                android:padding="2dp"
-                android:layout_toEndOf="@+id/item_imgchitiet"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/item_imgchitiet"
+                android:orientation="vertical"
+                android:padding="2dp">
+
                 <TextView
                     android:id="@+id/item_tenspchitiet"
-                    android:text="Ao Khoac"
-                    android:textSize="15sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:text="Ao Khoac"
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/item_soluongchitiet"
-                    android:text="Số lượng: 2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:text="Số lượng: 2" />
 
 
             </LinearLayout>

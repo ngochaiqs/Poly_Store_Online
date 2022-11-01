@@ -55,7 +55,7 @@ public class ChiTietAdapter extends RecyclerView.Adapter<ChiTietAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageChitet;
-        TextView txtten, txtsoluong;
+        TextView txtten, txtsoluong, txtsotien;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageChitet = itemView.findViewById(R.id.item_imgchitiet);
