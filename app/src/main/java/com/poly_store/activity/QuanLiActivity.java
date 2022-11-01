@@ -31,7 +31,6 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import soup.neumorphism.NeumorphCardView;
 
 public class QuanLiActivity extends AppCompatActivity {
 
@@ -82,7 +81,7 @@ public class QuanLiActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        toolbar = findViewById(R.id.toobar);
+        toolbar = findViewById(R.id.toolbarQuanLi);
         img_them = findViewById(R.id.img_them);
         recyclerView = findViewById(R.id.recycleview_ql);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -91,7 +90,6 @@ public class QuanLiActivity extends AppCompatActivity {
     }
 
     private void ActionToolBar() {
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

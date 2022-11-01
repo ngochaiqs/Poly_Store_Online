@@ -94,22 +94,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (i){
                     case 0:
                         Intent trangChu = new Intent(MainActivity.this, MainActivity.class);
-                        trangChu.putExtra("maLoai",1);
                         startActivity(trangChu);
                         break;
                     case 1:
                         Intent aoKhoac = new Intent(MainActivity.this, AoKhoacActivity.class);
-                        aoKhoac.putExtra("maLoai",2);
+                        aoKhoac.putExtra("maLoai",1);
                         startActivity(aoKhoac);
                         break;
                     case 2:
                         Intent aoThun = new Intent(MainActivity.this, AoThunActivity.class);
-                        aoThun.putExtra("maLoai",3);
+                        aoThun.putExtra("maLoai",2);
                         startActivity(aoThun);
                         break;
                     case 5:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
-                        donHang.putExtra("maLoai",6);
                         startActivity(donHang);
                         break;
                     case 6:

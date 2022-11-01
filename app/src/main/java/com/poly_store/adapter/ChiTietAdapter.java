@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.poly_store.R;
 import com.poly_store.model.Item;
+import com.poly_store.utils.Utils;
 
 import java.util.List;
 
@@ -38,7 +39,12 @@ public class ChiTietAdapter extends RecyclerView.Adapter<ChiTietAdapter.MyViewHo
         Item item = itemList.get(position);
         holder.txtten.setText(item.getTenSP() + "");
         holder.txtsoluong.setText("Số lượng: " + item.getSoLuong());
-        Glide.with(context).load(item.getHinhAnhSP()).into(holder.imageChitet);
+        if (item.getHinhAnhSP().contains("http")){
+            Glide.with(context).load(item.getHinhAnhSP()).into(holder.imageChitet);
+        }else{
+            String hinh = Utils.BASE_URL+"images/"+item.getHinhAnhSP();
+            Glide.with(context).load(hinh).into(holder.imageChitet);
+        }
 
     }
 

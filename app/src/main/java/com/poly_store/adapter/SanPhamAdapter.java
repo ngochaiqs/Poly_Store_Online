@@ -2,6 +2,7 @@ package com.poly_store.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import com.bumptech.glide.Glide;
 import com.poly_store.Interface.ItemClickListener;
 import com.poly_store.R;
 import com.poly_store.activity.ChiTietActivity;
+import com.poly_store.model.EventBus.SuaXoaEvent;
 import com.poly_store.model.SanPham;
 import com.poly_store.utils.Utils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -61,6 +65,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
                     intent.putExtra("chitiet", sanPham);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+                } else {
+                    EventBus.getDefault().postSticky(new SuaXoaEvent(sanPham));
                 }
             }
         });
@@ -72,7 +78,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
         TextView txtTenSP, txtGiaSP;
         ImageView imgSP;
         private ItemClickListener itemClickListener;
@@ -83,6 +89,14 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
             txtGiaSP = itemView.findViewById(R.id.tvGiaSanPham);
             imgSP = itemView.findViewById(R.id.imgSanPham);
             itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    itemClickListener.conClick(v, getAdapterPosition(), true);
+                    return false;
+                }
+            });
         }
 
         public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -92,6 +106,13 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
         @Override
         public void onClick(View view) {
             itemClickListener.conClick(view, getAdapterPosition(), false);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Chọn thao tác");
+            contextMenu.add(0, 0, getAdapterPosition(), "Xóa");
+            contextMenu.add(0, 1, getAdapterPosition(), "Sửa");
         }
     }
 }

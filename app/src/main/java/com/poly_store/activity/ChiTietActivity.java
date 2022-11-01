@@ -3,7 +3,6 @@ package com.poly_store.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -101,13 +100,14 @@ public class ChiTietActivity extends AppCompatActivity {
         tensp.setText(sanPham.getTenSP());
         mota.setText(sanPham.getMoTa());
         giasp.setText(sanPham.getGiaSP());
-        Glide.with(getApplicationContext()).load(sanPham.getHinhAnhSP()).into(imghinhanh);
+        if (sanPham.getHinhAnhSP().contains("http")){
+            Glide.with(getApplicationContext()).load(sanPham.getHinhAnhSP()).into(imghinhanh);
+        }else{
+            String hinh = Utils.BASE_URL+"images/"+sanPham.getHinhAnhSP();
+            Glide.with(getApplicationContext()).load(hinh).into(imghinhanh);
+        }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         giasp.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiaSP())) + " Đ");
-        Integer[] so = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        ArrayAdapter<Integer> adapterspin = new ArrayAdapter<>(this, androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item, so);
-        spinner.setAdapter(adapterspin);
-
     }
 
     private void initView() {
@@ -115,7 +115,6 @@ public class ChiTietActivity extends AppCompatActivity {
         giasp = findViewById(R.id.txtgiasp);
         mota = findViewById(R.id.txtmotachitiet);
         btnthem = findViewById(R.id.btnthemvaogiohang);
-        spinner = findViewById(R.id.spinner);
         imghinhanh = findViewById(R.id.imageChitiet);
         toolbar = findViewById(R.id.toolbarchitiet);
         badge = findViewById(R.id.menu_sl);

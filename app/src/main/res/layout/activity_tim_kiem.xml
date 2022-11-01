@@ -7,14 +7,14 @@
     tools:context=".activity.TimKiemActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        app:title=""
+        app:title="Tìm kiếm sản phẩm"
         android:background="#B2B4C1"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
     <EditText
-        android:hint="Nhập sản phẩm cần tìm"
+        android:hint="Nhập tên sản phẩm cần tìm"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
