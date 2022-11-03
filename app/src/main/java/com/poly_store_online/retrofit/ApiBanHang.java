@@ -36,8 +36,17 @@ public interface ApiBanHang {
             @Field("tenND") String tenND,
             @Field("email") String email,
             @Field("matKhau") String matKhau,
-            @Field("SDT") String SDT
+            @Field("SDT") String SDT,
+            @Field("uid") String uid
     );
+
+    @POST("updatetoken.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateToken(
+        @Field("id") int id,
+        @Field("token") String token
+    );
+
 
     @POST("dangnhap.php")
     @FormUrlEncoded

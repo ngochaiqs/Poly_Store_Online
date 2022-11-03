@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -23,7 +25,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store_online.R;
 import com.poly_store_online.adapter.LoaiSPAdapter;
@@ -70,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             NguoiDung nguoiDung = Paper.book().read("nguoidung");
             Utils.nguoidung_current = nguoiDung;
         }
+
+        getToken();
         AnhXa();
         ActionViewFlipper();
         ActionBar();
@@ -85,6 +91,29 @@ public class MainActivity extends AppCompatActivity {
         }else {
             Toast.makeText(getApplicationContext(), "Không có Internet", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    private void getToken(){
+        FirebaseMessaging.getInstance().getToken()
+                .addOnSuccessListener(new OnSuccessListener<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        if (!TextUtils.isEmpty(s)){
+                            compositeDisposable.add(apiBanHang.updateToken(Utils.nguoidung_current.getMaND(),s)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(
+                                       messageModel -> {
+
+                                       },
+                                       throwable -> {
+                                           Log.d("log", throwable.getMessage());
+                                       }
+                                    ));
+                        }
+                    }
+                });
     }
 
     private void getClickMenu() {
