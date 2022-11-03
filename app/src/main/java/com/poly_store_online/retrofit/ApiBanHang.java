@@ -26,8 +26,8 @@ public interface ApiBanHang {
     @POST("chitietdonhang.php")
     @FormUrlEncoded
     Observable<SanPhamModel> getSanPham(
-        @Field("page") int page,
-        @Field("maLoai") int maLoai
+            @Field("page") int page,
+            @Field("maLoai") int maLoai
     );
 
     @POST("dangky.php")
@@ -36,7 +36,8 @@ public interface ApiBanHang {
             @Field("tenND") String tenND,
             @Field("email") String email,
             @Field("matKhau") String matKhau,
-            @Field("SDT") String SDT
+            @Field("SDT") String SDT,
+            @Field("uid") String uid
     );
 
     @POST("dangnhap.php")
@@ -65,7 +66,12 @@ public interface ApiBanHang {
             @Field("chiTiet") String chiTiet
     );
 
-
+    @POST("updateorder.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateOrder(
+            @Field("maDH") int maDH,
+            @Field("trangThai") int trangThai
+    );
     @POST("xemdon.php")
     @FormUrlEncoded
     Observable<DonHangModel> xemDonHang(
@@ -107,6 +113,13 @@ public interface ApiBanHang {
             @Field("maLoai") int maLoai,
             @Field("maSP") int maSP
 
+    );
+
+    @POST("updatetoken.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateToken(
+            @Field("maND") int maND,
+            @Field("token") String token
     );
     @Multipart
     @POST("upload.php")

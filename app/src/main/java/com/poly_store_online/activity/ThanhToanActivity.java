@@ -15,11 +15,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.gson.Gson;
 import com.poly_store_online.R;
+import com.poly_store_online.model.NotiSendData;
 import com.poly_store_online.retrofit.ApiBanHang;
+import com.poly_store_online.retrofit.ApiPushNofication;
 import com.poly_store_online.retrofit.RetrofitClient;
+import com.poly_store_online.retrofit.RetrofitClientNoti;
 import com.poly_store_online.utils.Utils;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -84,18 +89,40 @@ public class ThanhToanActivity extends AppCompatActivity {
 
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(nguoiDungModel -> {
-                                    Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
-                                    Utils.mangmuahang.clear();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                            .subscribe(
+                                    nguoiDungModel -> {
+                                        pustNotiToUser();
+                                        Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                                        Utils.mangmuahang.clear();
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
                             }, throwable -> {
                                 Toast.makeText(getApplicationContext(), "Đặt hàng thất bại!", Toast.LENGTH_SHORT).show();
                             }));
     }
             }
         });
+    }
+
+    private void pustNotiToUser() {
+        String token = "dZVDB1CiTny4Wdw-cQDLxr:APA91bHJX2adDB7swvXF5gSClZkPfg1ySsIE3vtWHgYR1n7hsp1kIubZTuAMO09vJ2YWtT4hg9jUCQ8-qdnaQpxplNmP3FDXgtF8cKUdBuDKsw5VUEAfR4UwiUPZkM0amYfKKzUaz7wG";
+        Map<String, String> data = new HashMap<>();
+        data.put("title", "thong bao");
+        data.put("body", "Ban co don hang moi");
+        NotiSendData notiSendData = new NotiSendData(token, data);
+        ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
+        compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        notiResponse -> {
+
+                        },
+                        throwable -> {
+                            Log.d("Logg", throwable.getMessage());
+                        }
+                ));
     }
 
     private void initView(){
