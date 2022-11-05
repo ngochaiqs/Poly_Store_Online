@@ -40,6 +40,14 @@ public interface ApiBanHang {
             @Field("uid") String uid
     );
 
+    @POST("updatetoken.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateToken(
+        @Field("id") int id,
+        @Field("token") String token
+    );
+
+
     @POST("dangnhap.php")
     @FormUrlEncoded
     Observable<NguoiDungModel> dangNhap(
