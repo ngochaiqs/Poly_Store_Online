@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.poly_store_online.R;
@@ -70,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Paper.init(this);
-        if (Paper.book().read("nguoidung") != null){
-            NguoiDung nguoiDung = Paper.book().read("nguoidung");
+        if (Paper.book().read("user") != null){
+            NguoiDung nguoiDung = Paper.book().read("user");
             Utils.nguoidung_current = nguoiDung;
+
         }
 
         getToken();
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         Paper.book().delete("user");
                         Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
                         startActivity(dangnhap);
+                        FirebaseAuth.getInstance().signOut();
                         finish();
                         break;
                 }

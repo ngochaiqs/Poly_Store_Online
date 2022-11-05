@@ -37,7 +37,7 @@ public class DangNhapActivity extends AppCompatActivity {
     FirebaseUser user;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-    boolean isLogin = false;
+    private boolean isLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,9 +122,9 @@ public class DangNhapActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            dangNhap(Paper.book().read("email"), Paper.book().read("matKhau"));
+               //             dangNhap(Paper.book().read("email"), Paper.book().read("matKhau"));
                         }
-                    }, 1000);
+                    }, 100);
                 }
             }
         }

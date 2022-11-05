@@ -76,6 +76,10 @@ public class DangKyActivity extends AppCompatActivity {
                                 if (task.isSuccessful()){
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
                                     if (user != null){
+                                        postData(str_tenND, str_email, str_matKhau, str_sdt, user.getUid());
+                                    }
+                                }else{
+                                    Toast.makeText(getApplicationContext(), "Email da ton tai hoac khong thanh cong", Toast.LENGTH_SHORT).show();
                                         postData(str_email, str_matKhau, str_tenND, str_sdt, user.getUid());
                                     }
                                 }
