@@ -43,7 +43,7 @@ public interface ApiBanHang {
     @POST("updatetoken.php")
     @FormUrlEncoded
     Observable<MessageModel> updateToken(
-        @Field("id") int id,
+        @Field("maND") int maND,
         @Field("token") String token
     );
 
