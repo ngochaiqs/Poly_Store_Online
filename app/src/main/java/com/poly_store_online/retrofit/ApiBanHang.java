@@ -123,12 +123,7 @@ public interface ApiBanHang {
 
     );
 
-    @POST("updatetoken.php")
-    @FormUrlEncoded
-    Observable<MessageModel> updateToken(
-            @Field("maND") int maND,
-            @Field("token") String token
-    );
+
     @Multipart
     @POST("upload.php")
     Call<MessageModel> uploadFile(

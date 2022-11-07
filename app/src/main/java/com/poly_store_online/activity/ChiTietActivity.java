@@ -59,13 +59,13 @@ public class ChiTietActivity extends AppCompatActivity {
             for (int i = 0; i < Utils.manggiohang.size(); i++) {
                 if (Utils.manggiohang.get(i).getMaspGH() == sanPham.getMaSP()) {
                     Utils.manggiohang.get(i).setSoluongGH(soluong + Utils.manggiohang.get(i).getSoluongGH());
-                    long gia = Long.parseLong(sanPham.getGiaSP());
-                    Utils.manggiohang.get(i).setGiaspGH(gia);
+         //           long gia = Long.parseLong(sanPham.getGiaSP());
+                //    Utils.manggiohang.get(i).setGiaspGH(gia);
                     flag = true;
                 }
             }
             if (flag == false) {
-//                long gia = Long.parseLong(sanPham.getGiaSP());
+                long gia = Long.parseLong(sanPham.getGiaSP());
                 GioHang gioHang = new GioHang();
                 gioHang.setGiaspGH(Long.parseLong(sanPham.getGiaSP()));
                 gioHang.setSoluongGH(soluong);

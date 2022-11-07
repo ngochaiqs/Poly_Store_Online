@@ -80,10 +80,9 @@ public class DangKyActivity extends AppCompatActivity {
                                     }
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Email da ton tai hoac khong thanh cong", Toast.LENGTH_SHORT).show();
-                                        postData(str_email, str_matKhau, str_tenND, str_sdt, user.getUid());
                                     }
                                 }
-                            }
+                            
                         });
             }else{
                 Toast.makeText(getApplicationContext(), "Mat khau chua khop", Toast.LENGTH_SHORT).show();
