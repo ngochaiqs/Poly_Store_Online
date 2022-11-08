@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     SanPhamAdapter sanPhamAdapter;
     NotificationBadge badge;
     FrameLayout frameLayout;
-    ImageView imgsearch;
+    ImageView imgsearch, imageMess;
 
 
     @Override
@@ -116,6 +116,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                compositeDisposable.add(apiBanHang.getToken(1)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                nguoiDungModel -> {
+                                    Utils.ID_RECEIVED = String.valueOf(nguoiDungModel.getResult().get(0).getMaND());
+                                },
+                                throwable -> {
+
+                                }
+                        ));
     }
 
     private void getClickMenu() {
@@ -137,15 +149,15 @@ public class MainActivity extends AppCompatActivity {
                         aoThun.putExtra("maLoai",2);
                         startActivity(aoThun);
                         break;
-                    case 5:
+                    case 6:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
                         startActivity(donHang);
                         break;
-                    case 6:
+                    case 7:
                         Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
                         startActivity(quanli);
                         break;
-                    case 7:
+                    case 8:
                         // xóa key nguoidung
                         Paper.book().delete("user");
                         Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
@@ -182,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                         loaiSPModel -> {
                             if (loaiSPModel.isSuccess()){
                                 loaiSPList = loaiSPModel.getResult();
-                                loaiSPList.add(new LoaiSP("Quản lý",""));
+                             //   loaiSPList.add(new LoaiSP("Quản lý",""));
                                 loaiSPList.add(new LoaiSP("Đăng xuất",""));
                                 loaiSPAdapter = new LoaiSPAdapter(getApplicationContext(),loaiSPList);
                                 lvMain.setAdapter(loaiSPAdapter);
@@ -193,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void AnhXa() {
         imgsearch = findViewById(R.id.imgsearch);
+        imageMess = findViewById(R.id.image_mess);
         toolbar = findViewById(R.id.toolbarMain);
         viewFlipper = findViewById(R.id.viewLipper);
         recyclerViewMain = findViewById(R.id.recyclerviewMain);
@@ -230,6 +243,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TimKiemActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imageMess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
                 startActivity(intent);
             }
         });

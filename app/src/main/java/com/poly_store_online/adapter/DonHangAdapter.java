@@ -36,6 +36,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.MyviewHo
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
         DonHang donHang = listdonhang.get(position);
         holder.txtdonhang.setText("Đơn hàng: " + donHang.getMaDH());
+        holder.trangthai.setText(trangThaiDon(donHang.getTrangThai()));
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 holder.reChitiet.getContext(),
                 LinearLayoutManager.VERTICAL,
@@ -49,19 +51,47 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.MyviewHo
         holder.reChitiet.setRecycledViewPool(viewPool);
     }
 
+
+    private String trangThaiDon(int status){
+        String result = "";
+        switch (status){
+            case 0:
+                result = "Đơn hàng đang được xử lý";
+                break;
+            case 1:
+                result = "Đơn hàng đã chấp nhận";
+                break;
+            case 2:
+                result = "Đơn hàng đã giao cho đơn vị vận chuyển";
+                break;
+            case 3:
+                result = "Thành công";
+                break;
+            case 4:
+                result = "Đơn hàng đã hủy";
+                break;
+        }
+
+        return result;
+    }
+
     @Override
     public int getItemCount() {
         return listdonhang.size();
     }
 
     public class MyviewHolder extends RecyclerView.ViewHolder{
-        TextView txtdonhang;
+        TextView txtdonhang, trangthai;
         RecyclerView reChitiet;
 
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
             txtdonhang = itemView.findViewById(R.id.madonhang);
             reChitiet = itemView.findViewById(R.id.recycleview_chitiet);
+            trangthai = itemView.findViewById(R.id.tinhtrang);
+
         }
     }
+
+
 }

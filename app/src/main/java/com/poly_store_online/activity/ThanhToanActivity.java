@@ -91,7 +91,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(
                                     nguoiDungModel -> {
-                                        pustNotiToUser();
+                                        pushNotiToUser();
                                         Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                                         Utils.mangmuahang.clear();
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -105,22 +105,36 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
     }
 
-    private void pustNotiToUser() {
-        String token = "dZVDB1CiTny4Wdw-cQDLxr:APA91bHJX2adDB7swvXF5gSClZkPfg1ySsIE3vtWHgYR1n7hsp1kIubZTuAMO09vJ2YWtT4hg9jUCQ8-qdnaQpxplNmP3FDXgtF8cKUdBuDKsw5VUEAfR4UwiUPZkM0amYfKKzUaz7wG";
-        Map<String, String> data = new HashMap<>();
-        data.put("title", "thong bao");
-        data.put("body", "Ban co don hang moi");
-        NotiSendData notiSendData = new NotiSendData(token, data);
-        ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
-        compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
+    private void pushNotiToUser() {
+        //getToken
+        compositeDisposable.add(apiBanHang.getToken(1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        notiResponse -> {
+                        nguoiDungModel -> {
+                            if (nguoiDungModel.isSuccess()) {
+                                for (int i = 0; i < nguoiDungModel.getResult().size(); i++) {
+                                    Map<String, String> data = new HashMap<>();
+                                    data.put("title", "Thông báo ở app người dùng");
+                                    data.put("body", "Bạn có đơn hàng mới");
+                                    NotiSendData notiSendData = new NotiSendData(nguoiDungModel.getResult().get(i).getToken(), data);
+                                    ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
+                                    compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
+                                            .subscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(
+                                                    notiResponse -> {
+                                                    },
+                                                    throwable -> {
+                                                        Log.d("Logg", throwable.getMessage());
+                                                    }
+                                            ));
+                                }
+                            }
 
                         },
                         throwable -> {
-                            Log.d("Logg", throwable.getMessage());
+                            Log.d("loggg", throwable.getMessage());
                         }
                 ));
     }
