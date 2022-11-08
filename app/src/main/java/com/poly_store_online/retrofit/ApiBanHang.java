@@ -122,7 +122,11 @@ public interface ApiBanHang {
             @Field("maSP") int maSP
 
     );
-
+    @POST("gettoken.php")
+    @FormUrlEncoded
+    Observable<NguoiDungModel> getToken(
+            @Field("status") int status
+    );
 
     @Multipart
     @POST("upload.php")

@@ -6,6 +6,15 @@ public class NguoiDung {
     String email;
     String matKhau;
     String SDT;
+    String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public int getMaND() {
         return maND;
