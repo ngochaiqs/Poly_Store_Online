@@ -7,6 +7,7 @@ public class NguoiDungModel {
     String message;
     List<NguoiDung> result;
 
+
     public boolean isSuccess() {
         return success;
     }
