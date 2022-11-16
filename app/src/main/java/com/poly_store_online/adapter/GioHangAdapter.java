@@ -54,9 +54,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
             Glide.with(context).load(hinh).into(holder.item_giohang_image);
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.item_giohang_gia.setText(decimalFormat.format((gioHang.getGiaspGH())) );
+        holder.item_giohang_gia.setText(decimalFormat.format((gioHang.getGiaspGH())) + " Đ");
         long gia = gioHang.getSoluongGH() * gioHang.getGiaspGH();
-        holder.item_giohang_giasp2.setText(decimalFormat.format(gia));
+        holder.item_giohang_giasp2.setText(decimalFormat.format(gia) + " Đ");
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean b) {
@@ -85,7 +85,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
 
                     holder.item_giohang_soluong.setText((gioHangList.get(pos).getSoluongGH() + ""));
                     long gia = gioHangList.get(pos).getSoluongGH() * gioHangList.get(pos).getGiaspGH();
-                    holder.item_giohang_giasp2.setText(decimalFormat.format(gia));
+                    holder.item_giohang_giasp2.setText(decimalFormat.format(gia) + " Đ");
                     EventBus.getDefault().postSticky(new TinhTongEvent());
 
                     }else if (gioHangList.get(pos).getSoluongGH() ==1){
