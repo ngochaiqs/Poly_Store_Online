@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.poly_store_online.R;
-import com.poly_store_online.adapter.AoThunAdapter;
+import com.poly_store_online.adapter.AoSoMiAdapter;
 import com.poly_store_online.model.SanPham;
 import com.poly_store_online.retrofit.ApiBanHang;
 import com.poly_store_online.retrofit.RetrofitClient;
@@ -24,15 +24,14 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-
-public class AoThunActivity extends AppCompatActivity {
+public class AoSoMiActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     int page = 1;
     int loai;
-    AoThunAdapter adapterATh;
+    AoSoMiAdapter adapterASM;
     List<SanPham> sanPhamList;
     LinearLayoutManager linearLayoutManager;
     Handler handler = new Handler();
@@ -41,15 +40,16 @@ public class AoThunActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ao_thun);
+        setContentView(R.layout.activity_ao_so_mi);
 
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
-        loai = getIntent().getIntExtra("maLoai", 2);
-
+        loai = getIntent().getIntExtra("maLoai", 3);
 
         AnhXa();
         ActionToolBar();
         getData(page);
+//        addEventLoad();
+
     }
 
     private void addEventLoad(){
@@ -79,7 +79,7 @@ public class AoThunActivity extends AppCompatActivity {
             public void run() {
                 //add null
                 sanPhamList.add(null);
-                adapterATh.notifyItemInserted(sanPhamList.size()-1);
+                adapterASM.notifyItemInserted(sanPhamList.size()-1);
             }
         });
         handler.postDelayed(new Runnable() {
@@ -87,10 +87,10 @@ public class AoThunActivity extends AppCompatActivity {
             public void run() {
                 //recover null
                 sanPhamList.remove(sanPhamList.size()-1);
-                adapterATh.notifyItemRemoved(sanPhamList.size());
+                adapterASM.notifyItemRemoved(sanPhamList.size());
                 page = page+1;
                 getData(page);
-                adapterATh.notifyDataSetChanged();
+                adapterASM.notifyDataSetChanged();
                 isLoading =false;
             }
         },2000);
@@ -103,17 +103,17 @@ public class AoThunActivity extends AppCompatActivity {
                 .subscribe(
                         sanPhamModel -> {
                             if (sanPhamModel.isSuccess()){
-                                if (adapterATh == null){
+                                if (adapterASM == null){
                                     sanPhamList = sanPhamModel.getResult();
-                                    adapterATh = new AoThunAdapter(getApplicationContext(), sanPhamList);
-                                    recyclerView.setAdapter(adapterATh);
+                                    adapterASM = new AoSoMiAdapter(getApplicationContext(), sanPhamList);
+                                    recyclerView.setAdapter(adapterASM);
                                 }else {
                                     int vitri = sanPhamList.size()-1;
                                     int soluongadd = sanPhamModel.getResult().size();
                                     for (int i = 0; i < soluongadd; i++){
                                         sanPhamList.add(sanPhamModel.getResult().get(i));
                                     }
-                                    adapterATh.notifyItemRangeChanged(vitri, soluongadd);
+                                    adapterASM.notifyItemRangeChanged(vitri, soluongadd);
                                 }
 
                             }else {
@@ -138,9 +138,9 @@ public class AoThunActivity extends AppCompatActivity {
         });
     }
 
-    private void AnhXa(){
-        toolbar = findViewById(R.id.toolbarAoThun);
-        recyclerView = findViewById(R.id.recycleview_ath);
+    private void AnhXa() {
+        toolbar = findViewById(R.id.toolbarAoSoMi);
+        recyclerView = findViewById(R.id.recycleview_asm);
         linearLayoutManager = new LinearLayoutManager(this,linearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);

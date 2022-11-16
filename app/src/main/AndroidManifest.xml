@@ -63,6 +63,12 @@
             android:name=".activity.GioHangActivity"
             android:exported="true" />
         <activity
+            android:name=".activity.AoSoMiActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.QuanJeanActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.AoThunActivity"
             android:exported="true" />
         <activity

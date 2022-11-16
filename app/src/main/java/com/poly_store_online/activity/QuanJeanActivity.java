@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.poly_store_online.R;
-import com.poly_store_online.adapter.AoThunAdapter;
+import com.poly_store_online.adapter.QuanJeanAdapter;
 import com.poly_store_online.model.SanPham;
 import com.poly_store_online.retrofit.ApiBanHang;
 import com.poly_store_online.retrofit.RetrofitClient;
@@ -25,14 +25,15 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class AoThunActivity extends AppCompatActivity {
+public class QuanJeanActivity extends AppCompatActivity {
+
     Toolbar toolbar;
     RecyclerView recyclerView;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     int page = 1;
     int loai;
-    AoThunAdapter adapterATh;
+    QuanJeanAdapter adapterQJ;
     List<SanPham> sanPhamList;
     LinearLayoutManager linearLayoutManager;
     Handler handler = new Handler();
@@ -41,10 +42,10 @@ public class AoThunActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ao_thun);
+        setContentView(R.layout.activity_quan_jean);
 
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
-        loai = getIntent().getIntExtra("maLoai", 2);
+        loai = getIntent().getIntExtra("maLoai", 4);
 
 
         AnhXa();
@@ -79,7 +80,7 @@ public class AoThunActivity extends AppCompatActivity {
             public void run() {
                 //add null
                 sanPhamList.add(null);
-                adapterATh.notifyItemInserted(sanPhamList.size()-1);
+                adapterQJ.notifyItemInserted(sanPhamList.size()-1);
             }
         });
         handler.postDelayed(new Runnable() {
@@ -87,10 +88,10 @@ public class AoThunActivity extends AppCompatActivity {
             public void run() {
                 //recover null
                 sanPhamList.remove(sanPhamList.size()-1);
-                adapterATh.notifyItemRemoved(sanPhamList.size());
+                adapterQJ.notifyItemRemoved(sanPhamList.size());
                 page = page+1;
                 getData(page);
-                adapterATh.notifyDataSetChanged();
+                adapterQJ.notifyDataSetChanged();
                 isLoading =false;
             }
         },2000);
@@ -103,17 +104,17 @@ public class AoThunActivity extends AppCompatActivity {
                 .subscribe(
                         sanPhamModel -> {
                             if (sanPhamModel.isSuccess()){
-                                if (adapterATh == null){
+                                if (adapterQJ == null){
                                     sanPhamList = sanPhamModel.getResult();
-                                    adapterATh = new AoThunAdapter(getApplicationContext(), sanPhamList);
-                                    recyclerView.setAdapter(adapterATh);
+                                    adapterQJ = new QuanJeanAdapter(getApplicationContext(), sanPhamList);
+                                    recyclerView.setAdapter(adapterQJ);
                                 }else {
                                     int vitri = sanPhamList.size()-1;
                                     int soluongadd = sanPhamModel.getResult().size();
                                     for (int i = 0; i < soluongadd; i++){
                                         sanPhamList.add(sanPhamModel.getResult().get(i));
                                     }
-                                    adapterATh.notifyItemRangeChanged(vitri, soluongadd);
+                                    adapterQJ.notifyItemRangeChanged(vitri, soluongadd);
                                 }
 
                             }else {
@@ -139,8 +140,8 @@ public class AoThunActivity extends AppCompatActivity {
     }
 
     private void AnhXa(){
-        toolbar = findViewById(R.id.toolbarAoThun);
-        recyclerView = findViewById(R.id.recycleview_ath);
+        toolbar = findViewById(R.id.toolbarQuanJean);
+        recyclerView = findViewById(R.id.recycleview_qj);
         linearLayoutManager = new LinearLayoutManager(this,linearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);

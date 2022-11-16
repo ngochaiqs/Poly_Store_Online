@@ -22,23 +22,22 @@ import com.poly_store_online.utils.Utils;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class AoThunAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class AoSoMiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Context context;
     List<SanPham> array;
     private static final int VIEW_TYPE_DATA = 0;
     private static final int VIEW_TYPE_LOADING = 1;
 
-    public AoThunAdapter(Context context, List<SanPham> array) {
+    public AoSoMiAdapter(Context context, List<SanPham> array) {
         this.context = context;
         this.array = array;
     }
-
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_DATA){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_aothun, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_aosomi, parent, false);
             return new MyViewHolder(view);
         }else{
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loading,parent,false);
@@ -77,11 +76,12 @@ public class AoThunAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             loadingViewHolder loadingViewHolder = (loadingViewHolder) holder;
             loadingViewHolder.progressBar.setIndeterminate(true);
         }
+
     }
-    @Override
     public int getItemViewType(int position){
         return array.get(position) == null ? VIEW_TYPE_LOADING:VIEW_TYPE_DATA;
     }
+
 
     @Override
     public int getItemCount() {
@@ -97,17 +97,17 @@ public class AoThunAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tensp, giasp, mota, idsp;
+        TextView tensp, giasp;
         ImageView hinhanh;
 
         private ItemClickListener itemClickListener;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tensp = itemView.findViewById(R.id.itemath_ten);
-            giasp = itemView.findViewById(R.id.itemath_gia);
+            tensp = itemView.findViewById(R.id.itemasm_ten);
+            giasp = itemView.findViewById(R.id.itemasm_gia);
 //            mota = itemView.findViewById(R.id.itemak_mota);
-            hinhanh = itemView.findViewById(R.id.itemath_image);
+            hinhanh = itemView.findViewById(R.id.itemasm_image);
             itemView.setOnClickListener(this);
 
         }

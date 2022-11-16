@@ -149,6 +149,16 @@ public class MainActivity extends AppCompatActivity {
                         aoThun.putExtra("maLoai",2);
                         startActivity(aoThun);
                         break;
+                    case 3:
+                        Intent aoSoMi = new Intent(MainActivity.this, AoSoMiActivity.class);
+                        aoSoMi.putExtra("maLoai",3);
+                        startActivity(aoSoMi);
+                        break;
+                    case 4:
+                        Intent quanJean = new Intent(MainActivity.this, QuanJeanActivity.class);
+                        quanJean.putExtra("maLoai",4);
+                        startActivity(quanJean);
+                        break;
                     case 6:
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
                         startActivity(donHang);
