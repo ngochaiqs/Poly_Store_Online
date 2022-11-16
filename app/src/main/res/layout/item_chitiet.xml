@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.cardview.widget.CardView
+    <FrameLayout
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         >
         <RelativeLayout
             android:layout_margin="10dp"
             android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             >
 
             <ImageView
@@ -27,27 +27,29 @@
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/item_imgchitiet"
                 android:orientation="vertical"
-                android:padding="2dp">
+                android:layout_margin="5dp"
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/item_tenspchitiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ao Khoac"
-                    android:textSize="15sp" />
+                    android:padding="4dp"
+                    android:textStyle="bold"
+                    android:text="Áo khoác"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/item_soluongchitiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="4dp"
                     android:text="Số lượng: 2" />
 
 
             </LinearLayout>
 
         </RelativeLayout>
-
-
-    </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

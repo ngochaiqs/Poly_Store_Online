@@ -4,11 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     tools:context=".activity.ThemSPActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarThemSP"
-        app:title="Thêm sản phẩm"
-        android:background="#B2B4C1"
+        app:title="Thêm Sản Phẩm"
+        android:background="@color/toolbar_color"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
@@ -24,6 +27,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Tên sản phẩm"
+            android:drawableRight="@drawable/ic_baseline_drive_file_rename_outline_24"
             android:id="@+id/tenspthemsp"
             android:inputType="text"
             android:layout_width="match_parent"
@@ -40,6 +44,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Giá sản phẩm"
+            android:drawableRight="@drawable/ic_baseline_price_change_24"
             android:id="@+id/giaspthemsp"
             android:inputType="number"
             android:layout_width="match_parent"
@@ -74,11 +79,9 @@
             android:id="@+id/imgcamera"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_camera_alt_24"
+            android:src="@drawable/ic_baseline_image_24"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            app:tint="#3BEF0A" />
-
+            android:layout_height="40dp" />
 
     </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -92,6 +95,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Mô tả"
+            android:drawableRight="@drawable/ic_baseline_description_24"
             android:id="@+id/motathemsp"
             android:inputType="text"
             android:layout_width="match_parent"
@@ -109,13 +113,13 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnthemsp"
         app:layout_constraintTop_toBottomOf="@+id/spinner_loai_themsp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         android:text="Thêm sản phẩm"
-        android:background="@drawable/background_button"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:background="@drawable/button_bg"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

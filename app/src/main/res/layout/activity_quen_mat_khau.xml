@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:layout_margin="5dp"
     tools:context=".activity.QuenMatKhauActivity">
     <com.google.android.material.textfield.TextInputLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -17,28 +20,27 @@
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Email"
             android:id="@+id/edtQuenMK"
-            android:drawableLeft="@drawable/email"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
             android:inputType="textEmailAddress"
             android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnQuenMK"
         app:layout_constraintTop_toBottomOf="@+id/line1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="25dp"
-        android:text="Quen mat khau"
-        android:textColor="@color/white"
-        android:background="@drawable/background_button"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Quên mật khẩu"
+        android:textColor="@color/text_color_main"
+        android:background="@drawable/button_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-
     <ProgressBar
         android:id="@+id/progressbar"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,5 +51,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

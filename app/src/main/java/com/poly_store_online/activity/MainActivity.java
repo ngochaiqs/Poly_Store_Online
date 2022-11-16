@@ -117,17 +117,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                compositeDisposable.add(apiBanHang.getToken(1)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                nguoiDungModel -> {
-                                    Utils.ID_RECEIVED = String.valueOf(nguoiDungModel.getResult().get(0).getMaND());
-                                },
-                                throwable -> {
-
-                                }
-                        ));
+//                compositeDisposable.add(apiBanHang.getToken(1)
+//                        .subscribeOn(Schedulers.io())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(
+//                                nguoiDungModel -> {
+//                                    Utils.ID_RECEIVED = String.valueOf(nguoiDungModel.getResult().get(0).getMaND());
+//                                },
+//                                throwable -> {
+//
+//                                }
+//                        ));
     }
 
     private void getClickMenu() {

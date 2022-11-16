@@ -62,6 +62,14 @@ public interface ApiBanHang {
 
     );
 
+    @POST("doimatkhau.php")
+    @FormUrlEncoded
+    Observable<NguoiDungModel> doiMatKhau(
+            @Field("email") String email,
+            @Field("matKhau") String matKhau
+
+    );
+
     @POST("donhang.php")
     @FormUrlEncoded
     Observable<NguoiDungModel> datHang(

@@ -11,6 +11,7 @@
         android:elevation="8dp"
         app:cardCornerRadius="4dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_corner_14"
         >
         <LinearLayout
             android:orientation="vertical"
@@ -37,19 +38,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tinhtrang"
-                    android:text="đơn hàng đang được"
+                    android:text="Đơn hàng đang được"
                     android:textStyle="bold"
                     android:layout_marginLeft="25dp"
                     android:padding="5dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colortext"
                     android:textSize="16sp"/>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:fillViewport="true"
                 android:id="@+id/recycleview_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp" />

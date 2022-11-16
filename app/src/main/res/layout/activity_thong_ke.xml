@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
     tools:context=".activity.ThongKeActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarThongKe"
+        app:title="Thống Kê "
+        android:background="@color/toolbar_color"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thống Kê Sản Phẩm Bán Chạy"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/text_color_main"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/piechartThongKe"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

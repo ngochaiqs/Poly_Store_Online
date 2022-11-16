@@ -18,16 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Giỏ hàng"
-        android:background="#74A7FF"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Giỏ Hàng"
+        tools:layout_editor_absoluteX="5dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleviewgiohang"
         android:layout_margin="5dp"
+        android:padding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/layout1"
         app:layout_constraintTop_toBottomOf="@+id/toobar"
         android:layout_width="match_parent"
@@ -46,6 +50,7 @@
             android:layout_weight="1"
             android:text="Tổng tiền: "
             android:textSize="18sp"
+            android:gravity="center"
             android:textColor="@android:color/holo_red_light"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -54,9 +59,9 @@
             android:padding="5dp"
             android:layout_weight="1"
             android:id="@+id/txttongtien"
-            android:text="50.000 "
-            android:layout_marginRight="20dp"
-            android:gravity="right"
+            android:text="50.000 vnđ"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
             android:textSize="18sp"
             android:textColor="@android:color/holo_red_light"
             android:textStyle="bold"
@@ -65,15 +70,15 @@
     </LinearLayout>
     <Button
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:textSize="15sp"
         android:id="@+id/btnmuahang"
         android:text="Mua hàng"
+        android:textColor="@color/text_color_main"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/button_bg"
         />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

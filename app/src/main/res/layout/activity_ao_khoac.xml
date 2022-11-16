@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AoKhoacActivity">
+    tools:context=".activity.AoKhoacActivity"
+    android:layout_margin="5dp">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarAoKhoac"
-        app:title="Ao khoac"
-        android:background="#B2B4C1"
+        app:title="Áo Khoác"
+        android:background="@color/toolbar_color"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">

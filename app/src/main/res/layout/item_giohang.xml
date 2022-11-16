@@ -24,8 +24,11 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:padding="4dp"
+                android:textColor="@color/text_color_main"
                 android:id="@+id/item_giohang_tensp"
                 android:text="Tên sản phẩm"
                 android:layout_width="match_parent"
@@ -45,8 +48,9 @@
                     android:layout_weight="5"
                     android:width="0dp"
                     android:text="150000 đ"
+                    android:gravity="center|center_vertical"
                     android:textColor="@android:color/holo_red_light"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
                 <ImageView
                     android:src="@drawable/ic_baseline_remove_24"
                     android:id="@+id/item_giohang_tru"
@@ -78,13 +82,15 @@
                     android:text="250000 đ"
                     android:gravity="center|center_vertical"
                     android:layout_weight="5"
+                    android:textSize="13sp"
+                    android:layout_marginRight="10dp"
                     android:textColor="@android:color/holo_red_light"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
             <CheckBox
                 android:padding="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:id="@+id/item_giohang_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
