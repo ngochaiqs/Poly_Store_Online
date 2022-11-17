@@ -3,4 +3,7 @@
     <string name="g_a_100_000vnd">Giá: 100.000vnd</string>
     <string name="th_m_v_o_gi_h_ng">Thêm vào giỏ hàng</string>
     <string name="m_t_chi_ti_t_s_n_ph_m">Mô tả chi tiết sản phẩm</string>
+    <string name="facebook_app_id">1332898757543774</string>
+    <string name="fb_login_protocol_scheme">fb1332898757543774</string>
+    <string name="facebook_client_token">3eef74fd528020de8121f1f548803f24</string>
 </resources>
