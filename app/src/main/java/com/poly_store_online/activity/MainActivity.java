@@ -163,11 +163,11 @@ public class MainActivity extends AppCompatActivity {
                         Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
                         startActivity(donHang);
                         break;
+//                    case 7:
+//                        Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
+//                        startActivity(quanli);
+//                        break;
                     case 7:
-                        Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
-                        startActivity(quanli);
-                        break;
-                    case 8:
                         // xóa key nguoidung
                         Paper.book().delete("user");
                         Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
